@@ -8,7 +8,7 @@
   /** @ngInject */
   function routerConfig($stateProvider, $urlRouterProvider) {
     $stateProvider
-      .state('home', {
+      .state('homed', {
         url: '/',
         templateUrl: 'app/main/main.html',
         controller: 'MainController',
