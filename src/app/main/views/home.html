@@ -1,0 +1,40 @@
+<div class="container-fluid home-container">
+    <div class="row">
+        <div class="col-xs-12 col-sm-3 col-md-2 col-lg-2 sidebar-container">
+            <uib-accordion close-others="oneAtATime">
+                <div uib-accordion-group class="panel-default" heading="{{item.title}}" ng-repeat="item in vm.sidebarItems" is-open="true">
+                    <uib-tabset active="activePill" vertical="true" type="pills">
+                        <uib-tab index="0" heading="{{subItem.title}}" ng-repeat="subItem in item.subItems"></uib-tab>
+                    </uib-tabset>
+                </div>
+            </uib-accordion>
+        </div>
+        <div class="col-xs-12 col-sm-9 col-md-10 col-lg-10 data-container">
+            <div class="panel panel-default" ng-repeat="row in vm.tableData">
+                <div class="panel-heading">{{row.title}}</div>
+                <div class="panel-body">
+                    <table class="table table-hover table-responsive">
+                        <thead>
+                        <tr class="sortable">
+                            <th st-sort="name">Channel Name</th>
+                            <th st-sort="frequency">Frequency</th>
+                            <th st-sort="state">Action</th>
+                            <th st-sort="satellite">Satellite</th>
+                            <th st-sort="note">Note</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr ng-repeat="cell in row.cells">
+                            <td class="col-md-2"><img class="sign-img" ng-src="./assets/img/flags/{{cell.country}}.png" alt="" title="{{cell.country}}"> {{ cell.name }}</td>
+                            <td class="col-md-1">{{cell.frequency}}</td>
+                            <td class="col-md-1"><a href="#"><img class="sign-img" ng-src="./assets/img/{{cell.state}}.png" alt=""></a> {{cell.state}}</td>
+                            <td class="col-md-2">{{cell.satellite}}</td>
+                            <td class="col-md-7">{{cell.package}} {{item.note}}</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

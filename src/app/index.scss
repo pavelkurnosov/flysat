@@ -33,3 +33,232 @@ $icon-font-path: "../../bootstrap-sass/assets/fonts/bootstrap/";
  */
 // injector
 // endinjector
+
+body {
+  background: url('../assets/img/blur-bg.jpg');
+}
+
+.horizontal-collapse {
+  height: 70px;
+}
+
+.navbar-collapse.in {
+  overflow-y: hidden;
+}
+
+.navbar {
+  -webkit-border-radius: 0;
+  -moz-border-radius: 0;
+  border-radius: 0;
+  border: 0;
+  margin-bottom: 0;
+  height: 66px;
+}
+
+.navbar-default {
+  background-color: rgba(0, 0, 0, 0.6);
+  box-shadow: 0 6px 6px -6px black;
+
+  .navbar-collapse, .navbar-form {
+    border-color: transparent;
+  }
+
+  .navbar-nav {
+    li {
+      border-bottom: 4px solid transparent;
+      a {
+        color: white;
+        font-weight: bold;
+        height: 66px;
+        padding-top: 22px;
+        background: transparent;
+        &:focus {
+          color: white;
+        }
+      }
+      &.active, &:hover, &:active {
+        border-bottom: 4px solid rgb(60, 164, 255);
+        background: rgb(24, 66, 132);
+        a {
+          color: white;
+          background: transparent;
+          &:hover {
+            background: transparent;
+            color: rgb(60, 164, 255);
+          }
+        }
+      }
+    }
+  }
+}
+
+.navbar-brand {
+  padding: 1px;
+}
+
+.accordion-toggle {
+  color: black !important;
+}
+
+$transparent-black: rgba(0, 0, 0, 0.3);
+.panel-group {
+  background: $transparent-black;
+  .panel-default {
+    background: $transparent-black;
+    border: 0;
+    -webkit-border-radius: 0;
+    -moz-border-radius: 0;
+    border-radius: 0;
+  }
+  .panel-heading {
+    background: $transparent-black;
+    border: 0;
+  }
+  .panel-body {
+    padding: 0;
+    border: 0 !important;
+    .nav-link {
+      background: transparent;
+      -webkit-border-radius: 0;
+      -moz-border-radius: 0;
+      border-radius: 0;
+      padding: 4px 10px 4px 30px;
+      &:hover {
+        background: #3ca4ff;
+      }
+    }
+  }
+  .panel + .panel {
+    margin-top: 2px;
+  }
+  a, span {
+    color: white;
+    text-decoration: none;
+
+    &:focus {
+      outline: 0 !important;
+    }
+  }
+}
+
+.home-container {
+  padding-left: 0;
+}
+
+.table {
+  margin-bottom: 0;
+}
+
+.panel-default {
+  background: rgba(255, 255, 255, 0.7);
+}
+
+.panel {
+  .panel-heading {
+    background: transparent !important;
+    border-bottom: 1px solid #365a8e !important;
+  }
+}
+
+.sidebar-container {
+  padding-right: 0;
+}
+
+$table-line-color: #32a2dc;
+.data-container {
+  padding-top: 15px;
+
+  .panel-default {
+    margin-left: 15px;
+  }
+  .table > thead > tr > th {
+    border-bottom: 2px solid $table-line-color;
+  }
+  .table-hover > tbody > tr:hover {
+    background-color: rgba(65, 142, 208, 0.2);
+  }
+  .table > thead > tr > th, .table > thead > tr > td, .table > tbody > tr > th, .table > tbody > tr > td, .table > tfoot > tr > th, .table > tfoot > tr > td {
+    border-top: 1px solid $table-line-color;
+  }
+  .sign-img {
+    width: 15px;
+  }
+}
+
+.navbar-toggle {
+  border: 0 !important;
+}
+
+.navbar-toggle {
+  &:hover, &:focus, &:active {
+    background: transparent !important;
+    border: 0;
+    color: white;
+
+    .icon-bar {
+      background: white;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .navbar-nav {
+    background: #184284 !important;
+    position: absolute;
+    z-index: 1;
+    width: 100%;
+    margin-top: 15px;
+    li {
+      border: 0 !important;
+      a {
+        border-bottom: 1px solid #4479cc !important;
+        height: 40px !important;
+        padding-top: 10px !important;
+      }
+    }
+  }
+  .navbar-collapse {
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+  }
+}
+
+@media (max-width: 1350px) and (min-width: 768px) {
+  .navbar-default .navbar-nav li.active,
+  .navbar-default .navbar-nav li:hover,
+  .navbar-default .navbar-nav li:active {
+    border-color: white;
+    a{
+      &:focus, &:active{
+        background: transparent;
+        color: white;
+      }
+    }
+  }
+  .navbar-nav {
+    position: relative;
+    padding-top: 15px;
+    //width: calc(100% - 220px);
+    li{
+      border-radius: 5px;
+      border: 1px solid #105392 !important;
+      height: 40px;
+      padding-top: 4px;
+      margin-right: 5px;
+
+      a {
+        height: 30px !important;
+        font-size: 12px !important;
+        font-weight: inherit !important;
+        padding: 5px !important;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .table-responsive {
+    border: 0;
+  }
+}
