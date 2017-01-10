@@ -1,0 +1,14 @@
+<div class="container">
+    <form name="dataForm" novalidate>
+        <div class="form-group" ng-class="{ 'has-error': userForm.name.$invalid }" >
+            <label class="control-label">Name</label>
+            <input type="text" class="form-control" name="name" ng-model="user.name" required placeholder="Name" />
+        </div>
+        <div class="form-group" ng-class="{ 'has-error': userForm.email.$invalid }" >
+            <label class="control-label">Email</label>
+            <input type="email" class="form-control" name="email" ng-model="user.email" required placeholder="Email" />
+        </div>
+        <button class="btn btn-primary" ng-click="save()">Save</button>
+        <button class="btn btn-link" ng-click="reset()">Reset</button>
+    </form>
+</div>

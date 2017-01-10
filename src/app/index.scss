@@ -56,7 +56,7 @@ body {
 }
 
 .navbar-default {
-  background-color: rgba(0, 0, 0, 0.6);
+  background-color: rgba(0, 0, 0, 0.85);
   box-shadow: 0 6px 6px -6px black;
 
   .navbar-collapse, .navbar-form {
@@ -229,8 +229,8 @@ $table-line-color: #32a2dc;
   .navbar-default .navbar-nav li:hover,
   .navbar-default .navbar-nav li:active {
     border-color: white;
-    a{
-      &:focus, &:active{
+    a {
+      &:focus, &:active {
         background: transparent;
         color: white;
       }
@@ -240,7 +240,7 @@ $table-line-color: #32a2dc;
     position: relative;
     padding-top: 15px;
     //width: calc(100% - 220px);
-    li{
+    li {
       border-radius: 5px;
       border: 1px solid #105392 !important;
       height: 40px;
@@ -261,4 +261,19 @@ $table-line-color: #32a2dc;
   .table-responsive {
     border: 0;
   }
+}
+
+.header {
+  position: fixed;
+  width: 100%;
+  z-index: 1;
+}
+
+.behind-header {
+  width: 100%;
+  background: #105392;
+  height: 66px;
+  //opacity: 0;
+  display: block;
+  //position: fixed;
 }

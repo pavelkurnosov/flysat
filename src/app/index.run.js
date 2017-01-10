@@ -9,8 +9,8 @@
   function runBlock($log, $rootScope) {
     $rootScope.topMenuItems = [
       {id: '1', label: 'Home', url: '#home'},
-      {id: '2', label: 'Sat News', url: '#home'},
-      {id: '3', label: 'Sat List', url: '#hotbird'},
+      {id: '2', label: 'Sat News', url: '#hotbird'},
+      {id: '3', label: 'Sat List', url: '#input'},
       {id: '4', label: 'Packages', url: '#packages'},
       {id: '5', label: 'HD TV', url: '#hd_tv'},
       {id: '6', label: 'UHD TV', url: '#uhd_tv'},

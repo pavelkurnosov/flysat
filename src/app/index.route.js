@@ -19,6 +19,12 @@
                 templateUrl: 'app/main/views/hotbird.html',
                 controller: 'HotbirdCtrl',
                 controllerAs: 'vm'
+            })
+            .state('input', {
+                url: '/input',
+                templateUrl: 'app/main/views/input.html',
+                controller: 'InputCtrl',
+                controllerAs: 'vm'
             });
 
         $urlRouterProvider.otherwise('/');
