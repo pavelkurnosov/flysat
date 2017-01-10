@@ -24,6 +24,8 @@
     ];
 
     $rootScope.currMenu = '1';
+
+    $rootScope.serverUrl = 'http://localhost/fredy_fabrielo/controller.php?flag=';
   }
 
 })();

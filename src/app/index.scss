@@ -277,3 +277,25 @@ $table-line-color: #32a2dc;
   display: block;
   //position: fixed;
 }
+
+.input-container {
+  .table tbody {
+    background: rgba(255, 255, 255, 0.6);
+    tr:hover {
+      background: rgba(255, 255, 255, 0.3);
+    }
+    .controls-td {
+      a{
+        color: darkred;
+        &:hover{
+          color: darkblue;
+          text-decoration: none;
+          cursor: pointer;
+        }
+      }
+    }
+  }
+  .new-btn {
+    margin: 10px;
+  }
+}

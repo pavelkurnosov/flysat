@@ -5,7 +5,7 @@
         .controller('HomeCtrl', HomeCtrl);
 
     /** @ngInject */
-    function HomeCtrl() {
+    function HomeCtrl($http, $rootScope) {
         var vm = this;
 
         vm.sidebarItems = [{
@@ -72,5 +72,19 @@
                 {name: 'Kultura Ukraine', action: '', frequency: '(12341 V)', satellite: 'Türksat 3A', band: 'KU', package: '', note: 'C Band', state: 'on', country: 'United_Kingdom'}
             ]
         }];
+        vm.getData = function () {
+            $http.get($rootScope.serverUrl + "get_home_data")
+                .then(function (response) {
+                    console.log(response.data)
+                    vm.tableData = [{
+                        title: 'Channels Update for 06.01.2017',
+                        cells: response.data
+                    }, {
+                        title: 'Channels Update for 05.01.2017',
+                        cells: response.data
+                    }];
+                });
+        }
+        vm.getData();
     }
 })();
