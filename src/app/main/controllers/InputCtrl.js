@@ -6,7 +6,8 @@
         .controller('DataformCtrl', DataformCtrl);
 
     /** @ngInject */
-    function InputCtrl($http, $rootScope, $uibModal) {
+    function InputCtrl($http, $rootScope, $uibModal, ServerURL) {
+        console.log(ServerURL)
         var vm = this;
         vm.modal = {};
         vm.tableData = [];
@@ -14,7 +15,7 @@
         vm.currData = {};
 
         vm.getData = function () {
-            $http.get($rootScope.serverUrl + "get_table_data")
+            $http.get(ServerUrl + "get_table_data")
                 .then(function (response) {
                     vm.tableData = response.data;
                 });

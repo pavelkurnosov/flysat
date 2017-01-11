@@ -25,7 +25,7 @@
 
     $rootScope.currMenu = '1';
 
-    $rootScope.serverUrl = 'http://flysatbackend.greatsuccess.tech/controller.php?flag=';
+
   }
 
 })();

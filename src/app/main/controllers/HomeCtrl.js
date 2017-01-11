@@ -5,7 +5,8 @@
         .controller('HomeCtrl', HomeCtrl);
 
     /** @ngInject */
-    function HomeCtrl($http, $rootScope) {
+    function HomeCtrl($http, ServerUrl) {
+        console.log(ServerUrl)
         var vm = this;
 
         vm.sidebarItems = [{
@@ -73,7 +74,7 @@
             ]
         }];
         vm.getData = function () {
-            $http.get($rootScope.serverUrl + "get_home_data")
+            $http.get(ServerUrl + "get_home_data")
                 .then(function (response) {
                     console.log(response.data)
                     vm.tableData = [{
