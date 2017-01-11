@@ -5,8 +5,8 @@
         .controller('HomeCtrl', HomeCtrl);
 
     /** @ngInject */
-    function HomeCtrl($http, ServerUrl) {
-        console.log(ServerUrl)
+    function HomeCtrl($http, ServerURL) {
+        console.log(ServerURL)
         var vm = this;
 
         vm.sidebarItems = [{
