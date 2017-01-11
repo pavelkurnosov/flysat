@@ -11,24 +11,7 @@
         vm.modal = {};
         vm.tableData = [];
         vm.currRowId = 0;
-        vm.currData = {
-            'txp_no': '',
-            'source': '',
-            'date_val': '',
-            'freq_pol': '',
-            'mode': '',
-            'sr_fec': '',
-            'channel_name': '',
-            'web': '',
-            'v_pid': '',
-            'a_pid': '',
-            'language': '',
-            'sid': '',
-            'code': '',
-            'foot_prints': '',
-            'comments': '',
-            'country': 'United_Kingdom'
-        };
+        vm.currData = {};
 
         vm.getData = function () {
             $http.get($rootScope.serverUrl + "get_table_data")
@@ -68,6 +51,25 @@
                         break;
                     }
                 }
+            } else {
+                vm.currData = {
+                    'txp_no': '',
+                    'source': '',
+                    'date_val': '',
+                    'freq_pol': '',
+                    'mode': '',
+                    'sr_fec': '',
+                    'channel_name': '',
+                    'web': '',
+                    'v_pid': '',
+                    'a_pid': '',
+                    'language': '',
+                    'sid': '',
+                    'code': '',
+                    'foot_prints': '',
+                    'comments': '',
+                    'country': 'United_Kingdom'
+                };
             }
             vm.modal = $uibModal.open({
                 animation: true,

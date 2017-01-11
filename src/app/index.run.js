@@ -25,7 +25,7 @@
 
     $rootScope.currMenu = '1';
 
-    $rootScope.serverUrl = 'http://localhost/fredy_fabrielo/controller.php?flag=';
+    $rootScope.serverUrl = 'http://flysatbackend.greatsuccess.tech/controller.php?flag=';
   }
 
 })();
