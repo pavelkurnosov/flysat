@@ -6,6 +6,7 @@
         .module('flysat')
         .constant('malarkey', malarkey)
         .constant('moment', moment)
-        .constant('ServerURL', 'http://flysat.greatsuccess.tech/server/controller.php?flag=');
+        .constant('ServerURL', 'http://localhost/fredy_fabrielo/server/controller.php?flag=');
+        // .constant('ServerURL', 'http://flysat.greatsuccess.tech/server/controller.php?flag=');
 
 })();

@@ -302,3 +302,13 @@ $table-line-color: #32a2dc;
     margin: 10px;
   }
 }
+
+.input-container {
+  padding: 15px 0 0 0;
+  .nav-tabs {
+    padding-left: 15px;
+  }
+  .tab-content {
+    padding: 0;
+  }
+}

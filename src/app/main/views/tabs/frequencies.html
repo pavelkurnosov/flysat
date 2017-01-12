@@ -1,0 +1,152 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12 text-right">
+            <button type="button" class="btn btn-default new-btn" ng-click="vm.openModal(0)">Add New</button>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <table class="table table-responsive table-hover">
+                <thead>
+                <tr bgcolor="#cee7ff">
+                    <th>Satellite</th>
+                    <th>Band</th>
+                    <th>TP</th>
+                    <th>Frequency</th>
+                    <th>Symbol Rate</th>
+                    <th>FEC</th>
+                    <th>Modulation</th>
+                    <th>Provider</th>
+                    <th>Polarization</th>
+                    <th>Beam</th>
+                    <th>Format</th>
+                    <th>Status</th>
+                    <th>Date added</th>
+                    <th>Note</th>
+                    <th></th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr id="{{row.id}}" ng-repeat="row in vm.tableData">
+                    <td>{{row.satellite}}</td>
+                    <td>{{row.band}}</td>
+                    <td>{{row.tp}}</td>
+                    <td>{{row.frequency}}</td>
+                    <td>{{row.symbol_rate}}</td>
+                    <td>{{row.fec}}</td>
+                    <td>{{row.modulation}}</td>
+                    <td>{{row.provider}}</td>
+                    <td>{{row.polarization}}</td>
+                    <td>{{row.beam}}</td>
+                    <td>{{row.fformat}}</td>
+                    <td>{{row.status}}</td>
+                    <td>{{row.date_added}}</td>
+                    <td>{{row.note}}</td>
+                    <td class="controls-td">
+                        <a ng-click="vm.openModal(row.id)">Edit</a> /
+                        <a ng-click="vm.deleteData(row.id)">Delete</a>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<script type="text/ng-template" id="frequencies_form.html">
+    <div class="modal-header">
+        <h3 class="modal-title" id="modal-title-data">Edit Data</h3>
+    </div>
+    <div class="modal-body" id="modal-body-data">
+        <form class="form-group">
+            <div class="row">
+                <div class="col-sm-6 col-md-6">
+                    <div class="form-group">
+                        <label for="satellite">Satellite</label>
+                        <input type="text" ng-model="data.satellite" class="form-control" id="satellite" placeholder="Satellite">
+                    </div>
+                </div>
+                <div class="col-sm-6 col-md-6">
+                    <div class="form-group">
+                        <label for="band">Band</label>
+                        <input type="text" ng-model="data.band" class="form-control" id="band" placeholder="Band">
+                    </div>
+                </div>
+                <div class="col-sm-6 col-md-6">
+                    <div class="form-group">
+                        <label for="tp">TP</label>
+                        <input type="text" ng-model="data.tp" class="form-control" id="tp" placeholder="TP">
+                    </div>
+                </div>
+                <div class="col-sm-6 col-md-6">
+                    <div class="form-group">
+                        <label for="frequency">Frequency</label>
+                        <input type="text" ng-model="data.frequency" class="form-control" id="frequency" placeholder="Frequency">
+                    </div>
+                </div>
+                <div class="col-sm-6 col-md-6">
+                    <div class="form-group">
+                        <label for="symbol_rate">Symbol Rate</label>
+                        <input type="text" ng-model="data.symbol_rate" class="form-control" id="symbol_rate" placeholder="Symbol Rate">
+                    </div>
+                </div>
+                <div class="col-sm-6 col-md-6">
+                    <div class="form-group">
+                        <label for="fec">FEC</label>
+                        <input type="text" ng-model="data.fec" class="form-control" id="fec" placeholder="FEC">
+                    </div>
+                </div>
+                <div class="col-sm-6 col-md-6">
+                    <div class="form-group">
+                        <label for="modulation">Modulation</label>
+                        <input type="text" ng-model="data.modulation" class="form-control" id="modulation" placeholder="Modulation">
+                    </div>
+                </div>
+                <div class="col-sm-6 col-md-6">
+                    <div class="form-group">
+                        <label for="provider">Provider</label>
+                        <input type="text" ng-model="data.provider" class="form-control" id="provider" placeholder="Provider">
+                    </div>
+                </div>
+                <div class="col-sm-6 col-md-6">
+                    <div class="form-group">
+                        <label for="polarization">Polarization</label>
+                        <input type="text" ng-model="data.polarization" class="form-control" id="polarization" placeholder="Polarization">
+                    </div>
+                </div>
+                <div class="col-sm-6 col-md-6">
+                    <div class="form-group">
+                        <label for="fformat">Format</label>
+                        <input type="text" ng-model="data.fformat" class="form-control" id="fformat" placeholder="Format">
+                    </div>
+                </div>
+                <div class="col-sm-6 col-md-6">
+                    <div class="form-group">
+                        <label for="status">Status</label>
+                        <input type="text" ng-model="data.status" class="form-control" id="status" placeholder="Status">
+                    </div>
+                </div>
+                <div class="col-sm-6 col-md-6">
+                    <div class="form-group">
+                        <label for="date_added">Date added</label>
+                        <input type="text" ng-model="data.date_added" class="form-control" id="date_added" placeholder="Date added">
+                    </div>
+                </div>
+                <div class="col-sm-6 col-md-6">
+                    <div class="form-group">
+                        <label for="note">Note</label>
+                        <input type="text" ng-model="data.note" class="form-control" id="note" placeholder="Note">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    <div class="form-group">
+                        <button class="btn btn-primary" ng-click="save()">Save</button>
+                        <button class="btn btn-default" ng-click="close()">Cancel</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</script>
