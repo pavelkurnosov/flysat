@@ -76,13 +76,15 @@ body {
           color: white;
         }
       }
+
       &.active, &:hover, &:active {
         border-bottom: 4px solid rgb(60, 164, 255);
         background: rgb(24, 66, 132);
+
         a {
           color: white;
           background: transparent;
-          &:hover {
+          &:hover, &:focus {
             background: transparent;
             color: rgb(60, 164, 255);
           }
@@ -278,16 +280,17 @@ $table-line-color: #32a2dc;
   //position: fixed;
 }
 
-.input-container {
+.input-container,
+.hotbird-container {
   .table tbody {
     background: rgba(255, 255, 255, 0.6);
     tr:hover {
       background: rgba(255, 255, 255, 0.3);
     }
     .controls-td {
-      a{
+      a {
         color: darkred;
-        &:hover{
+        &:hover {
           color: darkblue;
           text-decoration: none;
           cursor: pointer;

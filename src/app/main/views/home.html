@@ -16,11 +16,11 @@
                     <table class="table table-hover table-responsive">
                         <thead>
                         <tr class="sortable">
-                            <th st-sort="channel_name">Channel Name</th>
-                            <th st-sort="freq_pol">Frequency</th>
-                            <th st-sort="state">Action</th>
-                            <th st-sort="satellite">Satellite</th>
-                            <th st-sort="note">Note</th>
+                            <th class="col-md-2" st-sort="channel_name">Channel Name</th>
+                            <th class="col-md-1" st-sort="freq_pol">Frequency</th>
+                            <th class="col-md-1" st-sort="state">Action</th>
+                            <th class="col-md-2" st-sort="satellite">Satellite</th>
+                            <th class="col-xs-0 col-md-7" st-sort="note">Note</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -29,7 +29,7 @@
                             <td class="col-md-1">({{cell.freq_pol}})</td>
                             <td class="col-md-1"><a href="#"><img class="sign-img" ng-src="./assets/img/left.png" alt=""></a> left</td>
                             <td class="col-md-2">{{cell.sid}} {{cell.code}}</td>
-                            <td class="col-md-7">{{cell.foot_prints}} {{item.comment}}</td>
+                            <td class="col-xs-0 col-md-7">{{cell.foot_prints}} {{item.comment}}</td>
                         </tr>
                         </tbody>
                     </table>

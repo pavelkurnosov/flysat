@@ -6,8 +6,7 @@
         .controller('DataformCtrl', DataformCtrl);
 
     /** @ngInject */
-    function InputCtrl($http, $rootScope, $uibModal, ServerURL) {
-        console.log(ServerURL)
+    function InputCtrl($http, $uibModal, ServerURL) {
         var vm = this;
         vm.modal = {};
         vm.tableData = [];
@@ -15,7 +14,7 @@
         vm.currData = {};
 
         vm.getData = function () {
-            $http.get(ServerUrl + "get_table_data")
+            $http.get(ServerURL + "get_table_data")
                 .then(function (response) {
                     vm.tableData = response.data;
                 });
@@ -23,7 +22,7 @@
         vm.getData();
 
         vm.saveData = function (data) {
-            var url = $rootScope.serverUrl + "add_table_data";
+            var url = ServerURL + "add_table_data";
             if (vm.currRowId * 1) url += '&id=' + vm.currRowId;
 
             var config = {headers: {'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'}};
@@ -36,7 +35,7 @@
 
         vm.deleteData = function (id) {
             if (confirm('Are you sure want to delete this?')) {
-                $http.get($rootScope.serverUrl + "delete_table_data&id=" + id)
+                $http.get(ServerURL + "delete_table_data&id=" + id)
                     .then(function (response) {
                         vm.getData();
                     });

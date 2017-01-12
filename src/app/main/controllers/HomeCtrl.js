@@ -6,7 +6,6 @@
 
     /** @ngInject */
     function HomeCtrl($http, ServerURL) {
-        console.log(ServerURL)
         var vm = this;
 
         vm.sidebarItems = [{
@@ -52,7 +51,7 @@
             title: "Recommended Sites"
         }];
 
-        vm.tableData = [{
+        /*vm.tableData = [{
             title: 'Channels Update for 06.01.2017',
             cells: [
                 {name: 'World Travel Channel', action: '', frequency: '(11558 V)', satellite: 'Türksat 3A @ 42° East', band: '', package: '', note: 'C Band', state: 'left', country: 'United_Kingdom'},
@@ -72,11 +71,11 @@
                 {name: 'Anadolu Kaplanları', action: '', frequency: '(11558 V)', satellite: 'Türksat 3A', band: 'KU', package: 'Orange Polsat', note: '', state: 'left', country: 'Wallis_and_Futuna'},
                 {name: 'Kultura Ukraine', action: '', frequency: '(12341 V)', satellite: 'Türksat 3A', band: 'KU', package: '', note: 'C Band', state: 'on', country: 'United_Kingdom'}
             ]
-        }];
+        }];*/
+        vm.tableData = [];
         vm.getData = function () {
-            $http.get(ServerUrl + "get_home_data")
+            $http.get(ServerURL + "get_home_data")
                 .then(function (response) {
-                    console.log(response.data)
                     vm.tableData = [{
                         title: 'Channels Update for 06.01.2017',
                         cells: response.data

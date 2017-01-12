@@ -1,13 +1,21 @@
 (function () {
-  'use strict';
+    'use strict';
 
-  angular
-      .module('flysat')
-      .controller('HotbirdCtrl', HotbirdCtrl);
+    angular
+        .module('flysat')
+        .controller('HotbirdCtrl', HotbirdCtrl);
 
-  /** @ngInject */
-  function HotbirdCtrl() {
-    var vm = this;
-    console.log(vm)
-  }
+    /** @ngInject */
+    function HotbirdCtrl($http, ServerURL) {
+        var vm = this;
+        vm.tableData = [];
+
+        vm.getData = function () {
+            $http.get(ServerURL + "get_table_data")
+                .then(function (response) {
+                    vm.tableData = response.data;
+                });
+        };
+        vm.getData();
+    }
 })();
