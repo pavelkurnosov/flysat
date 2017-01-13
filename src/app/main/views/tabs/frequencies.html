@@ -22,8 +22,8 @@
                 </tr>
                 </thead>
                 <tbody>
-                <tr id="{{row.id}}" ng-repeat="row in vm.tableData">
-                    <td>{{row.satellite}}</td>
+                <tr id="{{row.id}}" ng-dblclick="vm.openModal(row.id)" ng-repeat="row in vm.tableData">
+                    <td>{{row.sate_name}}</td>
                     <td>{{row.band}}</td>
                     <td>{{row.tp}}</td>
                     <td>{{row.frequency}}</td>
@@ -58,7 +58,9 @@
                 <div class="col-sm-6 col-md-6">
                     <div class="form-group">
                         <label for="satellite">Satellite</label>
-                        <input type="text" ng-model="data.satellite" class="form-control" id="satellite" placeholder="Satellite">
+                        <select class="form-control" id="satellite" ng-model="data.satellite">
+                            <option ng-repeat="sate in satellites" ng-value="sate.id">{{sate.sate_name}}</option>
+                        </select>
                     </div>
                 </div>
                 <div class="col-sm-6 col-md-6">

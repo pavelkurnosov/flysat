@@ -1,11 +1,17 @@
 <div class="container-fluid input-container">
     <uib-tabset>
-        <uib-tab index="$index + 1" ng-repeat="tab in vm.tabs" heading="{{tab.heading}}" active="tab.active" select="vm.onTabSelect(tab.id)">
+        <uib-tab
+                index="$index + 1"
+                ng-repeat="tab in vm.tabs"
+                heading="{{tab.heading}}"
+                active="tab.active"
+                select="vm.onTabSelect(tab.id)">
             <div ng-include="tab.template"></div>
         </uib-tab>
         <div class="navigators-div text-right">
             <ul class="pagination-sm"
                 uib-pagination
+                items-per-page="vm.itemsPerPage"
                 total-items="vm.allTablePages"
                 ng-model="vm.currTablePage"
                 max-size="5"

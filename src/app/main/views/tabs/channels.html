@@ -29,7 +29,7 @@
                 </tr>
                 </thead>
                 <tbody>
-                <tr id="{{row.id}}" ng-repeat="row in vm.tableData">
+                <tr id="{{row.id}}" ng-dblclick="vm.openModal(row.id)" ng-repeat="row in vm.tableData">
                     <td>{{row.satellite}}</td>
                     <td>{{row.frequency}}</td>
                     <td>{{row.package}}</td>

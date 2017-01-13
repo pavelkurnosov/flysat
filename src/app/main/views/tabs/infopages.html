@@ -10,7 +10,7 @@
                 </tr>
                 </thead>
                 <tbody>
-                <tr id="{{row.id}}" ng-repeat="row in vm.tableData">
+                <tr id="{{row.id}}" ng-dblclick="vm.openModal(row.id)" ng-repeat="row in vm.tableData">
                     <td>{{row.company}}</td>
                     <td>{{row.url}}</td>
                     <td class="controls-td">

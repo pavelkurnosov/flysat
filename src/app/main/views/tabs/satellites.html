@@ -20,7 +20,7 @@
                 </tr>
                 </thead>
                 <tbody>
-                <tr id="{{row.id}}" ng-repeat="row in vm.tableData">
+                <tr id="{{row.id}}" ng-dblclick="vm.openModal(row.id)" ng-repeat="row in vm.tableData">
                     <td>{{row.sate_name}}</td>
                     <td>{{row.orbit}}</td>
                     <td>{{row.url}}</td>
@@ -92,7 +92,7 @@
                 <div class="col-sm-6 col-md-6">
                     <div class="form-group">
                         <label for="launch_date">Launch date</label>
-                        <input type="text" ng-model="data.launch_date" class="form-control" id="launch_date" placeholder="Launch date">
+                        <input type="date" ng-model="data.launch_date" class="form-control" id="launch_date" placeholder="Launch date">
                     </div>
                 </div>
                 <div class="col-sm-6 col-md-6">
