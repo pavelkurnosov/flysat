@@ -2,10 +2,10 @@
     'use strict';
 
     angular.module('flysat')
-        .controller('HomeCtrl', HomeCtrl);
+        .controller('HomeController', HomeController);
 
     /** @ngInject */
-    function HomeCtrl($http, ServerURL) {
+    function HomeController($http, ServerURL) {
         var vm = this;
 
         vm.sidebarItems = [{

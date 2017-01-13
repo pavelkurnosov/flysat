@@ -3,5 +3,16 @@
         <uib-tab index="$index + 1" ng-repeat="tab in vm.tabs" heading="{{tab.heading}}" active="tab.active" select="vm.onTabSelect(tab.id)">
             <div ng-include="tab.template"></div>
         </uib-tab>
+        <div class="navigators-div text-right">
+            <ul class="pagination-sm"
+                uib-pagination
+                total-items="vm.allTablePages"
+                ng-model="vm.currTablePage"
+                max-size="5"
+                boundary-link-numbers="true"
+                rotate="false"
+                ng-change="vm.onPaginationChange()"></ul>
+            <button type="button" class="btn btn-success new-btn" ng-click="vm.openModal(0)">Add New</button>
+        </div>
     </uib-tabset>
 </div>

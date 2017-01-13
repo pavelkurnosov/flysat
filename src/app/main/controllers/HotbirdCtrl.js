@@ -3,10 +3,10 @@
 
     angular
         .module('flysat')
-        .controller('HotbirdCtrl', HotbirdCtrl);
+        .controller('HotbirdController', HotbirdController);
 
     /** @ngInject */
-    function HotbirdCtrl($http, ServerURL) {
+    function HotbirdController($http, ServerURL) {
         var vm = this;
         vm.tableData = [];
 

@@ -4,7 +4,7 @@
     angular
         .module('flysat')
         .run(runBlock)
-        .controller('MainCtrl', MainCtrl);
+        .controller('MainController', MainController);
 
     /** @ngInject */
     function runBlock($log, $rootScope) {
@@ -29,8 +29,8 @@
 
     }
 
-    function MainCtrl($scope, $rootScope) {
-        $scope.topMenuClick = function (menuId) {
+    function MainController($rootScope) {
+        $rootScope.topMenuClick = function (menuId) {
             $rootScope.currMenu = menuId;
         }
     }

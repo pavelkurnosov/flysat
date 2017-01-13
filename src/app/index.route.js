@@ -11,19 +11,19 @@
             .state('home', {
                 url: '/',
                 templateUrl: 'app/main/views/home.html',
-                controller: 'HomeCtrl',
+                controller: 'HomeController',
                 controllerAs: 'vm'
             })
             .state('hotbird', {
                 url: '/hotbird',
                 templateUrl: 'app/main/views/hotbird.html',
-                controller: 'HotbirdCtrl',
+                controller: 'HotbirdController',
                 controllerAs: 'vm'
             })
             .state('input', {
                 url: '/input',
                 templateUrl: 'app/main/views/input.html',
-                controller: 'InputCtrl',
+                controller: 'InputController',
                 controllerAs: 'vm'
             });
 

@@ -1,51 +1,56 @@
 <div class="container-fluid">
     <div class="row">
-        <div class="col-md-12 text-right">
-            <button type="button" class="btn btn-default new-btn" ng-click="vm.openModal(0)">Add New</button>
-        </div>
-    </div>
-    <div class="row">
         <div class="col-md-12">
             <table class="table table-responsive table-hover">
                 <thead>
                 <tr bgcolor="#cee7ff">
-                    <th st-sort="">Txp No</th>
-                    <th>Source</th>
-                    <th>Date</th>
-                    <th>Freq Pol</th>
-                    <th>Mode</th>
-                    <th>SR-FEC</th>
-                    <th>Channel Name</th>
-                    <th>web</th>
+                    <th>Satellite</th>
+                    <th>Frequency</th>
+                    <th>Package</th>
+                    <th>Name</th>
+                    <th>Type</th>
+                    <th>A.PID/Languege </th>
+                    <th>Main Languages</th>
                     <th>V.PID</th>
-                    <th>A.PID</th>
-                    <th>Language</th>
                     <th>SID</th>
-                    <th>Code</th>
-                    <th>Foot<br/>Prints</th>
-                    <th>Comments</th>
+                    <th>Audio codec</th>
+                    <th>Video codec</th>
+                    <th>Encryption</th>
+                    <th>Format</th>
+                    <th>Resolution</th>
                     <th>Country</th>
+                    <th>Website</th>
+                    <th>Infopage</th>
+                    <th>Status</th>
+                    <th>Year launched</th>
+                    <th>Date added</th>
+                    <th>Note</th>
                     <th></th>
                 </tr>
                 </thead>
                 <tbody>
                 <tr id="{{row.id}}" ng-repeat="row in vm.tableData">
-                    <td>{{row.txp_no}}</td>
-                    <td>{{row.source}}</td>
-                    <td>{{row.date_val}}</td>
-                    <td>{{row.freq_pol}}</td>
-                    <td>{{row.mode}}</td>
-                    <td>{{row.sr_fec}}</td>
+                    <td>{{row.satellite}}</td>
+                    <td>{{row.frequency}}</td>
+                    <td>{{row.package}}</td>
                     <td>{{row.channel_name}}</td>
-                    <td>{{row.web}}</td>
+                    <td>{{row.channel_type}}</td>
+                    <td>{{row.a_pid_lang}}</td>
+                    <td>{{row.main_lang}}</td>
                     <td>{{row.v_pid}}</td>
-                    <td>{{row.a_pid}}</td>
-                    <td>{{row.language}}</td>
                     <td>{{row.sid}}</td>
-                    <td>{{row.code}}</td>
-                    <td>{{row.foot_prints}}</td>
-                    <td>{{row.comments}}</td>
+                    <td>{{row.audio_codec}}</td>
+                    <td>{{row.video_codec}}</td>
+                    <td>{{row.encryption}}</td>
+                    <td>{{row.cformat}}</td>
+                    <td>{{row.resolution}}</td>
                     <td>{{row.country}}</td>
+                    <td>{{row.website}}</td>
+                    <td>{{row.infopage}}</td>
+                    <td>{{row.status}}</td>
+                    <td>{{row.year_launched}}</td>
+                    <td>{{row.date_added}}</td>
+                    <td>{{row.note}}</td>
                     <td class="controls-td">
                         <a ng-click="vm.openModal(row.id)">Edit</a> /
                         <a ng-click="vm.deleteData(row.id)">Delete</a>
@@ -59,57 +64,51 @@
 
 <script type="text/ng-template" id="channels_form.html">
     <div class="modal-header">
-        <h3 class="modal-title" id="modal-title-data">Edit Data</h3>
+        <h3 class="modal-title" id="modal-title-data">Edit Channel Info</h3>
     </div>
     <div class="modal-body" id="modal-body-data">
         <form class="form-group">
             <div class="row">
                 <div class="col-sm-6 col-md-6">
                     <div class="form-group">
-                        <label for="txp_no">Txp No</label>
-                        <input type="text" ng-model="data.txp_no" class="form-control" id="txp_no" placeholder="Txp No" required>
+                        <label for="satellite">Satellite</label>
+                        <input type="text" ng-model="data.satellite" class="form-control" id="satellite" placeholder="Satellite">
                     </div>
                 </div>
                 <div class="col-sm-6 col-md-6">
                     <div class="form-group">
-                        <label for="source">Source</label>
-                        <input type="text" ng-model="data.source" class="form-control" id="source" placeholder="Source">
+                        <label for="frequency">Frequency</label>
+                        <input type="text" ng-model="data.frequency" class="form-control" id="frequency" placeholder="Frequency">
                     </div>
                 </div>
                 <div class="col-sm-6 col-md-6">
                     <div class="form-group">
-                        <label for="source">Date</label>
-                        <input type="text" ng-model="data.date_val" class="form-control" id="date_val" placeholder="Date">
+                        <label for="package">Package</label>
+                        <input type="text" ng-model="data.package" class="form-control" id="package" placeholder="Package">
                     </div>
                 </div>
                 <div class="col-sm-6 col-md-6">
                     <div class="form-group">
-                        <label for="freq_pol">Freq Pol</label>
-                        <input type="text" ng-model="data.freq_pol" class="form-control" id="freq_pol" placeholder="Freq Pol">
+                        <label for="channel_name">Name</label>
+                        <input type="text" ng-model="data.channel_name" class="form-control" id="channel_name" placeholder="Name">
                     </div>
                 </div>
                 <div class="col-sm-6 col-md-6">
                     <div class="form-group">
-                        <label for="mode">Mode</label>
-                        <input type="text" ng-model="data.mode" class="form-control" id="mode" placeholder="Mode">
+                        <label for="channel_type">Type</label>
+                        <input type="text" ng-model="data.channel_type" class="form-control" id="channel_type" placeholder="Type">
                     </div>
                 </div>
                 <div class="col-sm-6 col-md-6">
                     <div class="form-group">
-                        <label for="sr_fec">SR-FEC</label>
-                        <input type="text" ng-model="data.sr_fec" class="form-control" id="sr_fec" placeholder="SR-FEC">
+                        <label for="a_pid_lang">A.PID/Languege</label>
+                        <input type="text" ng-model="data.a_pid_lang" class="form-control" id="a_pid_lang" placeholder="A.PID/Languege">
                     </div>
                 </div>
                 <div class="col-sm-6 col-md-6">
                     <div class="form-group">
-                        <label for="channel_name">Channel Name</label>
-                        <input type="text" ng-model="data.channel_name" class="form-control" id="channel_name" placeholder="Channel Name">
-                    </div>
-                </div>
-                <div class="col-sm-6 col-md-6">
-                    <div class="form-group">
-                        <label for="web">Web</label>
-                        <input type="text" ng-model="data.web" class="form-control" id="web" placeholder="Web">
+                        <label for="main_lang">Main Languages</label>
+                        <input type="text" ng-model="data.main_lang" class="form-control" id="main_lang" placeholder="Main Languages">
                     </div>
                 </div>
                 <div class="col-sm-6 col-md-6">
@@ -120,38 +119,38 @@
                 </div>
                 <div class="col-sm-6 col-md-6">
                     <div class="form-group">
-                        <label for="a_pid">A.PID</label>
-                        <input type="text" ng-model="data.a_pid" class="form-control" id="a_pid" placeholder="A.PID">
-                    </div>
-                </div>
-                <div class="col-sm-6 col-md-6">
-                    <div class="form-group">
-                        <label for="language">Language</label>
-                        <input type="text" ng-model="data.language" class="form-control" id="language" placeholder="Language">
-                    </div>
-                </div>
-                <div class="col-sm-6 col-md-6">
-                    <div class="form-group">
                         <label for="sid">SID</label>
                         <input type="text" ng-model="data.sid" class="form-control" id="sid" placeholder="SID">
                     </div>
                 </div>
                 <div class="col-sm-6 col-md-6">
                     <div class="form-group">
-                        <label for="code">Code</label>
-                        <input type="text" ng-model="data.code" class="form-control" id="code" placeholder="Code">
+                        <label for="audio_codec">Audio codec</label>
+                        <input type="text" ng-model="data.audio_codec" class="form-control" id="audio_codec" placeholder="Audio codec">
                     </div>
                 </div>
                 <div class="col-sm-6 col-md-6">
                     <div class="form-group">
-                        <label for="foot_prints">Foot Prints</label>
-                        <input type="text" ng-model="data.foot_prints" class="form-control" id="foot_prints" placeholder="Foot Prints">
+                        <label for="video_codec">Video codec</label>
+                        <input type="text" ng-model="data.video_codec" class="form-control" id="video_codec" placeholder="Video codec">
                     </div>
                 </div>
                 <div class="col-sm-6 col-md-6">
                     <div class="form-group">
-                        <label for="comments">Comments</label>
-                        <input type="text" ng-model="data.comments" class="form-control" id="comments" placeholder="Comments">
+                        <label for="encryption">Encryption</label>
+                        <input type="text" ng-model="data.encryption" class="form-control" id="encryption" placeholder="Encryption">
+                    </div>
+                </div>
+                <div class="col-sm-6 col-md-6">
+                    <div class="form-group">
+                        <label for="cformat">Format</label>
+                        <input type="text" ng-model="data.cformat" class="form-control" id="cformat" placeholder="Format">
+                    </div>
+                </div>
+                <div class="col-sm-6 col-md-6">
+                    <div class="form-group">
+                        <label for="resolution">Resolution</label>
+                        <input type="text" ng-model="data.resolution" class="form-control" id="resolution" placeholder="Resolution">
                     </div>
                 </div>
                 <div class="col-sm-6 col-md-6">
@@ -160,6 +159,42 @@
                         <select class="form-control" id="countries" ng-model="data.country">
                             <option ng-repeat="country in countries">{{country}}</option>
                         </select>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-md-6">
+                    <div class="form-group">
+                        <label for="website">Website</label>
+                        <input type="text" ng-model="data.website" class="form-control" id="website" placeholder="Website">
+                    </div>
+                </div>
+                <div class="col-sm-6 col-md-6">
+                    <div class="form-group">
+                        <label for="infopage">Infopage</label>
+                        <input type="text" ng-model="data.infopage" class="form-control" id="infopage" placeholder="Infopage">
+                    </div>
+                </div>
+                <div class="col-sm-6 col-md-6">
+                    <div class="form-group">
+                        <label for="status">Status</label>
+                        <input type="text" ng-model="data.status" class="form-control" id="status" placeholder="Status">
+                    </div>
+                </div>
+                <div class="col-sm-6 col-md-6">
+                    <div class="form-group">
+                        <label for="year_launched">Year launched</label>
+                        <input type="text" ng-model="data.year_launched" class="form-control" id="year_launched" placeholder="Year launched">
+                    </div>
+                </div>
+                <div class="col-sm-6 col-md-6">
+                    <div class="form-group">
+                        <label for="date_added">Date added</label>
+                        <input type="text" ng-model="data.date_added" class="form-control" id="date_added" placeholder="Date added">
+                    </div>
+                </div>
+                <div class="col-sm-6 col-md-6">
+                    <div class="form-group">
+                        <label for="note">Note</label>
+                        <input type="text" ng-model="data.note" class="form-control" id="note" placeholder="Note">
                     </div>
                 </div>
             </div>

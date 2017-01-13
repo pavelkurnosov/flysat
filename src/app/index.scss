@@ -299,14 +299,24 @@ $table-line-color: #32a2dc;
     }
   }
   .new-btn {
-    margin: 10px;
+    margin-right: 0;
+    margin-top: -25px;
   }
 }
 
 .input-container {
   padding: 15px 0 0 0;
+  .navigators-div {
+    padding-right: 15px;
+    ul{
+      &.pagination {
+        margin: 0;
+      }
+    }
+  }
   .nav-tabs {
     padding-left: 15px;
+    margin-bottom: 15px;
   }
   .tab-content {
     padding: 0;
