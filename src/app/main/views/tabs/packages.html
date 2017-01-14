@@ -15,7 +15,7 @@
                 </tr>
                 </thead>
                 <tbody>
-                <tr id="{{row.id}}" ng-dblclick="vm.openModal(row.id)" ng-repeat="row in vm.tableData">
+                <tr ng-dblclick="vm.openModal(row.id)" ng-repeat="(key, row) in vm.tableData">
                     <td>{{row.package_name}}</td>
                     <td>{{row.company}}</td>
                     <td>{{row.website}}</td>
@@ -44,25 +44,25 @@
                 <div class="col-sm-6 col-md-6">
                     <div class="form-group">
                         <label for="package_name">Package name</label>
-                        <input type="text" ng-model="data.package_name" class="form-control" id="package_name" placeholder="Package name" required>
+                        <input type="text" ng-model="data.package_name" class="form-control" id="package_name" placeholder="Package name">
                     </div>
                 </div>
                 <div class="col-sm-6 col-md-6">
                     <div class="form-group">
                         <label for="company">Company</label>
-                        <input type="text" ng-model="data.company" class="form-control" id="company" placeholder="Company" required>
+                        <input type="text" ng-model="data.company" class="form-control" id="company" placeholder="Company">
                     </div>
                 </div>
                 <div class="col-sm-6 col-md-6">
                     <div class="form-group">
                         <label for="website">Website</label>
-                        <input type="text" ng-model="data.website" class="form-control" id="website" placeholder="Website" required>
+                        <input type="text" ng-model="data.website" class="form-control" id="website" placeholder="Website">
                     </div>
                 </div>
                 <div class="col-sm-6 col-md-6">
                     <div class="form-group">
                         <label for="languages">Languages</label>
-                        <input type="text" ng-model="data.languages" class="form-control" id="languages" placeholder="Languages" required>
+                        <input type="text" ng-model="data.languages" class="form-control" id="languages" placeholder="Languages">
                     </div>
                 </div>
                 <div class="col-sm-6 col-md-6">
@@ -76,13 +76,13 @@
                 <div class="col-sm-6 col-md-6">
                     <div class="form-group">
                         <label for="encryptions">Encryptions</label>
-                        <input type="text" ng-model="data.encryptions" class="form-control" id="encryptions" placeholder="Encryptions" required>
+                        <input type="text" ng-model="data.encryptions" class="form-control" id="encryptions" placeholder="Encryptions">
                     </div>
                 </div>
                 <div class="col-sm-6 col-md-6">
                     <div class="form-group">
                         <label for="satellites">Satellites</label>
-                        <input type="text" ng-model="data.satellites" class="form-control" id="satellites" placeholder="Satellites" required>
+                        <input type="text" ng-model="data.satellites" class="form-control" id="satellites" placeholder="Satellites">
                     </div>
                 </div>
             </div>

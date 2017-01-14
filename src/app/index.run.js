@@ -26,6 +26,13 @@
 
         $rootScope.currMenu = '1';
 
+        Date.prototype.getDateString = function() {
+            if (!this.getDate()) {
+                return '';
+            } else {
+                return this.getDate() + '/' + (this.getMonth() + 1) + '/' + this.getFullYear();
+            }
+        }
 
     }
 
@@ -35,3 +42,4 @@
         }
     }
 })();
+

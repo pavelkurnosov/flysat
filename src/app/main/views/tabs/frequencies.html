@@ -22,7 +22,7 @@
                 </tr>
                 </thead>
                 <tbody>
-                <tr id="{{row.id}}" ng-dblclick="vm.openModal(row.id)" ng-repeat="row in vm.tableData">
+                <tr ng-dblclick="vm.openModal(row.id)" ng-repeat="(key, row) in vm.tableData">
                     <td>{{row.sate_name}}</td>
                     <td>{{row.band}}</td>
                     <td>{{row.tp}}</td>
@@ -35,7 +35,7 @@
                     <td>{{row.beam}}</td>
                     <td>{{row.fformat}}</td>
                     <td>{{row.status}}</td>
-                    <td>{{row.date_added}}</td>
+                    <td>{{row.date_added.getDateString()}}</td>
                     <td>{{row.note}}</td>
                     <td class="controls-td">
                         <a ng-click="vm.openModal(row.id)">Edit</a> /
@@ -126,9 +126,15 @@
                 <div class="col-sm-6 col-md-6">
                     <div class="form-group">
                         <label for="date_added">Date added</label>
-                        <input type="text" ng-model="data.date_added" class="form-control" id="date_added" placeholder="Date added">
+                        <input type="date" ng-model="data.date_added" class="form-control" id="date_added" placeholder="Date added">
                     </div>
                 </div>
+                <!--<div class="col-sm-6 col-md-6">
+                    <div class="form-group">
+                        <label for="date_added">Date added</label>
+                        <input type="date" ng-model="data.date_added" class="form-control" id="date_added" placeholder="Date added">
+                    </div>
+                </div>-->
                 <div class="col-sm-6 col-md-6">
                     <div class="form-group">
                         <label for="note">Note</label>

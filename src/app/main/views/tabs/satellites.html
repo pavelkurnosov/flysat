@@ -20,14 +20,17 @@
                 </tr>
                 </thead>
                 <tbody>
-                <tr id="{{row.id}}" ng-dblclick="vm.openModal(row.id)" ng-repeat="row in vm.tableData">
+                <tr ng-dblclick="vm.openModal(row.id)" ng-repeat="(key, row) in vm.tableData">
                     <td>{{row.sate_name}}</td>
                     <td>{{row.orbit}}</td>
-                    <td>{{row.url}}</td>
-                    <td>{{row.beams}}</td>
+                    <td>{{row.url_name}}</td>
+                    <td>
+                        <a class="beam-selector" ng-repeat="beam in row.beams" ng-click="vm.openBeamModal(key, beam.id)">{{beam.beam_name}}<br/></a>
+                        <a class="beam-selector" ng-if="row.beams.length == 0" ng-click="vm.openBeamModal(key, 0)">(Add Beam)</a>
+                    </td>
                     <td>{{row.company}}</td>
                     <td>{{row.country}}</td>
-                    <td>{{row.launch_date}}</td>
+                    <td>{{row.launch_date.getDateString()}}</td>
                     <td>{{row.life_time}}</td>
                     <td>{{row.status}}</td>
                     <td>{{row.footprint}}</td>
@@ -54,7 +57,7 @@
                 <div class="col-sm-6 col-md-6">
                     <div class="form-group">
                         <label for="sate_name">Name</label>
-                        <input type="text" ng-model="data.sate_name" class="form-control" id="sate_name" placeholder="Name" required>
+                        <input type="text" ng-model="data.sate_name" class="form-control" id="sate_name" placeholder="Name">
                     </div>
                 </div>
                 <div class="col-sm-6 col-md-6">
@@ -130,6 +133,40 @@
                 <div class="col-md-12 text-center">
                     <div class="form-group">
                         <button class="btn btn-primary" ng-click="save()">Save</button>
+                        <button class="btn btn-default" ng-click="close()">Cancel</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</script>
+
+<script type="text/ng-template" id="beam_form.html">
+    <div class="modal-header">
+        <h3 class="modal-title" id="modal-title-beam">Edit Beam Infomation</h3>
+    </div>
+    <div class="modal-body" id="modal-body-beam">
+        <form class="form-group">
+            <div class="row">
+                <div class="col-sm-6 col-md-6">
+                    <div class="form-group">
+                        <label for="beam_name">Beam Name</label>
+                        <input type="text" ng-model="data.beam_name" class="form-control" id="beam_name" placeholder="Beam Name">
+                    </div>
+                </div>
+                <div class="col-sm-6 col-md-6">
+                    <div class="form-group">
+                        <label for="link">Link</label>
+                        <input type="text" ng-model="data.link" class="form-control" id="link" placeholder="Link">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    <div class="form-group">
+                        <button class="btn btn-primary" ng-click="save()">Save</button>
+                        <button class="btn btn-success" ng-click="add()">Add New</button>
+                        <button class="btn btn-danger" ng-click="delete()">Delete</button>
                         <button class="btn btn-default" ng-click="close()">Cancel</button>
                     </div>
                 </div>
