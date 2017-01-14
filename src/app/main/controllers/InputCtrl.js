@@ -73,7 +73,11 @@
             var newData = {};
             for (var d in data) {
                 if (typeof data[d] == 'object') {
-                    newData[d] = data[d].getFullYear() + '-' + (data[d].getMonth() + 1) + '-' + data[d].getDate();
+                    if (angular.isFunction(data[d].getMonth)) {
+                        newData[d] = data[d].getFullYear() + '-' + (data[d].getMonth() + 1) + '-' + data[d].getDate();
+                    } else {
+                        newData[d] = '';
+                    }
                 } else {
                     newData[d] = data[d];
                 }
