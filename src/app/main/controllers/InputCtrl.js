@@ -28,6 +28,15 @@
         vm.currTablePage = 1;
         vm.itemsPerPage = 15;
         vm.satellites = {};
+        vm.sateStatuses = ['Active', 'Inclined orbit', 'Failed', 'Not in service', 'Unknown'];
+        vm.bands = ['C-Band', 'KU-Band', 'KA-Band', 'X-Band'];
+        vm.fecs = ['1/2', '2/3', '3/4', '5/6', '7/8'];
+        vm.modulations = ['BPSK', 'QPSK', 'OQPSK', '8PSK', '16APSK', '32APSK', 'QAM'];
+        vm.polarizations = ['Hor', 'Ver'];
+        vm.fformats = ['DVB', 'DVB-S2'];
+        vm.freqStatuses = ['Active', 'Inactive'];
+        vm.channelTypes = ['Radio','TV','Data','Other'];
+        vm.channelStatuses = ['On Air', 'Left', 'Returned', 'Resumed After a short break', 'Resumed after a long break'];
 
         vm.onTabSelect = function (tabId) {
             vm.currTab = tabId;
@@ -35,17 +44,14 @@
             vm.getData();
             vm.getSatellites();
         };
-
         vm.onPaginationChange = function () {
             vm.getData();
         };
-
         vm.getSatellites = function () {
             $http.get(ServerURL + "getsatecombo").then(function (response) {     // get all satellites data.
                 vm.satellites = response.data;
             });
         };
-
         vm.getData = function () {
             vm.tableData = {};
             $http.get(ServerURL + vm.currTab + "-get&p=" + vm.currTablePage).then(function (response) {     // getting table data.
@@ -65,7 +71,6 @@
                 vm.allTablePages = response.data['total_rows'];
             });
         };
-
         vm.saveData = function (data) {
             var url = ServerURL + vm.currTab + "-save";
             if (vm.currRowId * 1) url += '&id=' + vm.currRowId;
@@ -89,7 +94,6 @@
                     vm.modal.close();
                 });
         };
-
         vm.deleteData = function (id) {
             if (confirm('Are you sure want to delete this?')) {
                 $http.get(ServerURL + vm.currTab + "-delete&id=" + id)
@@ -98,7 +102,6 @@
                     });
             }
         };
-
         vm.openModal = function (rowId) {
             vm.currRowId = rowId;
 
@@ -123,7 +126,6 @@
                 vm.currRowId = 0;
             });
         };
-
         vm.saveBeam = function (data) {
             var url = ServerURL + "beam-save";
             if (vm.currBeamId * 1) url += '&id=' + vm.currBeamId;
@@ -135,7 +137,6 @@
                     vm.beamModal.close();
                 });
         };
-
         vm.deleteBeam = function () {
             if (vm.currBeamId * 1) {
                 if (confirm('Are you sure want to delete this beam?')) {
@@ -147,7 +148,6 @@
                 }
             }
         };
-
         vm.openBeamModal = function (sateId, beamId) {
             vm.currRowId = sateId;
             vm.currBeamId = beamId;
@@ -173,7 +173,6 @@
                 vm.currBeamId = 0;
             });
         };
-
         vm.initDateFields = function (fields) {
             for (var t in vm.tableData) {
                 for (var f in fields) {
@@ -185,8 +184,17 @@
 })();
 
 function DataformController($scope, parentScope) {
+    $scope.sateStatuses = parentScope.sateStatuses;
+    $scope.freqStatuses = parentScope.freqStatuses;
+    $scope.channelStatuses = parentScope.channelStatuses;
+    $scope.bands = parentScope.bands;
     $scope.countries = parentScope.countries;
     $scope.satellites = parentScope.satellites;
+    $scope.fecs = parentScope.fecs;
+    $scope.modulations = parentScope.modulations;
+    $scope.polarizations = parentScope.polarizations;
+    $scope.fformats = parentScope.fformats;
+    $scope.channelTypes = parentScope.channelTypes;
 
     for (var i in parentScope.tableData) {
         if (parentScope.tableData[i]['id'] == parentScope.currRowId) {

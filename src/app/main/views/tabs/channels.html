@@ -98,13 +98,15 @@
                 <div class="col-sm-6 col-md-6">
                     <div class="form-group">
                         <label for="channel_type">Type</label>
-                        <input type="text" ng-model="data.channel_type" class="form-control" id="channel_type" placeholder="Type">
+                        <select class="form-control" id="channel_type" ng-model="data.channel_type">
+                            <option ng-repeat="channelType in channelTypes">{{channelType}}</option>
+                        </select>
                     </div>
                 </div>
                 <div class="col-sm-6 col-md-6">
                     <div class="form-group">
-                        <label for="a_pid_lang">A.PID/Languege</label>
-                        <input type="text" ng-model="data.a_pid_lang" class="form-control" id="a_pid_lang" placeholder="A.PID/Languege">
+                        <label for="a_pid_lang">A.PID/Languages</label>
+                        <input type="text" ng-model="data.a_pid_lang" class="form-control" id="a_pid_lang" placeholder="A.PID/Languages">
                     </div>
                 </div>
                 <div class="col-sm-6 col-md-6">
@@ -178,7 +180,9 @@
                 <div class="col-sm-6 col-md-6">
                     <div class="form-group">
                         <label for="status">Status</label>
-                        <input type="text" ng-model="data.status" class="form-control" id="status" placeholder="Status">
+                        <select class="form-control" id="status" ng-model="data.status">
+                            <option ng-repeat="status in channelStatuses">{{status}}</option>
+                        </select>
                     </div>
                 </div>
                 <div class="col-sm-6 col-md-6">

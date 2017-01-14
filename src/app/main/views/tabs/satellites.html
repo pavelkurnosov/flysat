@@ -26,7 +26,7 @@
                     <td>{{row.url_name}}</td>
                     <td>
                         <a class="beam-selector" ng-repeat="beam in row.beams" ng-click="vm.openBeamModal(key, beam.id)">{{beam.beam_name}}<br/></a>
-                        <a class="beam-selector" ng-if="row.beams.length == 0" ng-click="vm.openBeamModal(key, 0)">(Add Beam)</a>
+                        <a class="beam-selector" ng-if="row.beams.length == 0" ng-click="vm.openBeamModal(key, 0)">(new)</a>
                     </td>
                     <td>{{row.company}}</td>
                     <td>{{row.country}}</td>
@@ -101,7 +101,9 @@
                 <div class="col-sm-6 col-md-6">
                     <div class="form-group">
                         <label for="status">Status</label>
-                        <input type="text" ng-model="data.status" class="form-control" id="status" placeholder="Status">
+                        <select class="form-control" id="status" ng-model="data.status">
+                            <option ng-repeat="status in sateStatuses">{{status}}</option>
+                        </select>
                     </div>
                 </div>
                 <div class="col-sm-6 col-md-6">
