@@ -66,9 +66,10 @@
                 <div class="col-sm-6 col-md-6">
                     <div class="form-group">
                         <label for="band">Band</label>
-                        <select class="form-control" id="band" ng-model="data.band">
-                            <option ng-repeat="band in bands">{{band}}</option>
-                        </select>
+                        <input type="text" ng-model="data.band" class="form-control" id="band" list="list-band">
+                        <datalist id="list-band">
+                            <option ng-repeat="item in bands" value="{{item}}">
+                        </datalist>
                     </div>
                 </div>
                 <div class="col-sm-6 col-md-6">
@@ -91,18 +92,20 @@
                 </div>
                 <div class="col-sm-6 col-md-6">
                     <div class="form-group">
-                        <label for="fec">Band</label>
-                        <select class="form-control" id="fec" ng-model="data.fec">
-                            <option ng-repeat="fec in fecs">{{fec}}</option>
-                        </select>
+                        <label for="fec">FEC</label>
+                        <input type="text" ng-model="data.fec" class="form-control" id="fec" list="list-fec">
+                        <datalist id="list-fec">
+                            <option ng-repeat="item in fecs" value="{{item}}">
+                        </datalist>
                     </div>
                 </div>
                 <div class="col-sm-6 col-md-6">
                     <div class="form-group">
                         <label for="modulation">Modulation</label>
-                        <select class="form-control" id="modulation" ng-model="data.modulation">
-                            <option ng-repeat="modulation in modulations">{{modulation}}</option>
-                        </select>
+                        <input type="text" ng-model="data.modulation" class="form-control" id="modulation" list="list-modulation">
+                        <datalist id="list-modulation">
+                            <option ng-repeat="item in modulations" value="{{item}}">
+                        </datalist>
                     </div>
                 </div>
                 <div class="col-sm-6 col-md-6">
@@ -114,25 +117,28 @@
                 <div class="col-sm-6 col-md-6">
                     <div class="form-group">
                         <label for="polarization">Polarization</label>
-                        <select class="form-control" id="polarization" ng-model="data.polarization">
-                            <option ng-repeat="polarization in polarizations">{{polarization}}</option>
-                        </select>
+                        <input type="text" ng-model="data.polarization" class="form-control" id="polarization" list="list-polarization">
+                        <datalist id="list-polarization">
+                            <option ng-repeat="item in polarizations" value="{{item}}">
+                        </datalist>
                     </div>
                 </div>
                 <div class="col-sm-6 col-md-6">
                     <div class="form-group">
                         <label for="fformat">Format</label>
-                        <select class="form-control" id="fformat" ng-model="data.fformat">
-                            <option ng-repeat="fformat in fformats">{{fformat}}</option>
-                        </select>
+                        <input type="text" ng-model="data.fformat" class="form-control" id="fformat" list="list-fformat">
+                        <datalist id="list-fformat">
+                            <option ng-repeat="item in fformats" value="{{item}}">
+                        </datalist>
                     </div>
                 </div>
                 <div class="col-sm-6 col-md-6">
                     <div class="form-group">
                         <label for="status">Status</label>
-                        <select class="form-control" id="status" ng-model="data.status">
-                            <option ng-repeat="status in freqStatuses">{{status}}</option>
-                        </select>
+                        <input type="text" ng-model="data.status" class="form-control" id="status" list="list-status">
+                        <datalist id="list-status">
+                            <option ng-repeat="item in freqStatuses" value="{{item}}">
+                        </datalist>
                     </div>
                 </div>
                 <div class="col-sm-6 col-md-6">

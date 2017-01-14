@@ -80,7 +80,9 @@
                 <div class="col-sm-6 col-md-6">
                     <div class="form-group">
                         <label for="frequency">Frequency</label>
-                        <input type="text" ng-model="data.frequency" class="form-control" id="frequency" placeholder="Frequency">
+                        <select class="form-control" id="frequency" ng-model="data.frequency">
+                            <option ng-repeat="freq in frequencies[data.satellite]" ng-value="freq">{{freq}}</option>
+                        </select>
                     </div>
                 </div>
                 <div class="col-sm-6 col-md-6">
@@ -98,9 +100,10 @@
                 <div class="col-sm-6 col-md-6">
                     <div class="form-group">
                         <label for="channel_type">Type</label>
-                        <select class="form-control" id="channel_type" ng-model="data.channel_type">
-                            <option ng-repeat="channelType in channelTypes">{{channelType}}</option>
-                        </select>
+                        <input type="text" ng-model="data.channel_type" class="form-control" id="channel_type" list="list-channel_type">
+                        <datalist id="list-channel_type">
+                            <option ng-repeat="item in channelTypes" value="{{item}}">
+                        </datalist>
                     </div>
                 </div>
                 <div class="col-sm-6 col-md-6">
@@ -160,9 +163,10 @@
                 <div class="col-sm-6 col-md-6">
                     <div class="form-group">
                         <label for="countries">Country</label>
-                        <select class="form-control" id="countries" ng-model="data.country">
-                            <option ng-repeat="country in countries">{{country}}</option>
-                        </select>
+                        <input type="text" ng-model="data.country" class="form-control" id="countries" list="list-countries">
+                        <datalist id="list-countries">
+                            <option ng-repeat="item in countries" value="{{item}}">
+                        </datalist>
                     </div>
                 </div>
                 <div class="col-sm-6 col-md-6">
@@ -180,9 +184,10 @@
                 <div class="col-sm-6 col-md-6">
                     <div class="form-group">
                         <label for="status">Status</label>
-                        <select class="form-control" id="status" ng-model="data.status">
-                            <option ng-repeat="status in channelStatuses">{{status}}</option>
-                        </select>
+                        <input type="text" ng-model="data.status" class="form-control" id="status" list="list-status">
+                        <datalist id="list-status">
+                            <option ng-repeat="item in channelStatuses" value="{{item}}">
+                        </datalist>
                     </div>
                 </div>
                 <div class="col-sm-6 col-md-6">

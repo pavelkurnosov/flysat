@@ -1,4 +1,5 @@
 <div class="container-fluid">
+    <img src=""
     <div class="row">
         <div class="col-md-12">
             <table class="table table-responsive table-hover">
@@ -29,8 +30,8 @@
                         <a class="beam-selector" ng-if="row.beams.length == 0" ng-click="vm.openBeamModal(key, 0)">(new)</a>
                     </td>
                     <td>{{row.company}}</td>
-                    <td>{{row.country}}</td>
-                    <td>{{row.launch_date.getDateString()}}</td>
+                    <td>{{row.country.split('_').join(' ')}}</td>
+                    <td>{{row.launch_date}}</td>
                     <td>{{row.life_time}}</td>
                     <td>{{row.status}}</td>
                     <td>{{row.footprint}}</td>
@@ -81,15 +82,16 @@
                 <div class="col-sm-6 col-md-6">
                     <div class="form-group">
                         <label for="countries">Country</label>
-                        <select class="form-control" id="countries" ng-model="data.country">
-                            <option ng-repeat="country in countries">{{country}}</option>
-                        </select>
+                        <input type="text" ng-model="data.country" class="form-control" id="countries" list="list-countries">
+                        <datalist id="list-countries">
+                            <option ng-repeat="item in countries" value="{{item}}">
+                        </datalist>
                     </div>
                 </div>
                 <div class="col-sm-6 col-md-6">
                     <div class="form-group">
                         <label for="launch_date">Launch date</label>
-                        <input type="date" ng-model="data.launch_date" class="form-control" id="launch_date" placeholder="Launch date">
+                        <input type="text" ng-model="data.launch_date" class="form-control" id="launch_date" placeholder="Launch date">
                     </div>
                 </div>
                 <div class="col-sm-6 col-md-6">
@@ -101,9 +103,10 @@
                 <div class="col-sm-6 col-md-6">
                     <div class="form-group">
                         <label for="status">Status</label>
-                        <select class="form-control" id="status" ng-model="data.status">
-                            <option ng-repeat="status in sateStatuses">{{status}}</option>
-                        </select>
+                        <input type="text" ng-model="data.status" class="form-control" id="status" list="list-status">
+                        <datalist id="list-status">
+                            <option ng-repeat="item in sateStatuses" value="{{item}}">
+                        </datalist>
                     </div>
                 </div>
                 <div class="col-sm-6 col-md-6">
