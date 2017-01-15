@@ -4,7 +4,8 @@
     angular.module('flysat')
         .controller('InputController', InputController)
         .controller('DataformController', DataformController)
-        .controller('BeamformController', BeamformController);
+        .controller('BeamformController', BeamformController)
+        .controller('ApidformController', ApidformController);
 
     /** @ngInject */
     function InputController($http, $uibModal, ServerURL) {
@@ -12,9 +13,11 @@
 
         vm.modal = {};
         vm.beamModal = {};
+        vm.apidModal = {};
         vm.tableData = [];
         vm.currRowId = 0;
         vm.currBeamId = 0;
+        vm.currApidId = 0;
         vm.currTab = "satellites";
         vm.tabs = [
             {"id": "satellites", "heading": "Satellites", "active": true, "template": "app/main/views/tabs/satellites.html"},
@@ -29,27 +32,17 @@
         vm.satellites = {};
         vm.frequencies = {};
 
-        // vm.sateStatuses = ['Active', 'Inclined orbit', 'Failed', 'Not in service', 'Unknown'];
-        // vm.bands = ['C-Band', 'KU-Band', 'KA-Band', 'X-Band'];
-        // vm.fecs = ['1/2', '2/3', '3/4', '5/6', '7/8'];
-        // vm.modulations = ['BPSK', 'QPSK', 'OQPSK', '8PSK', '16APSK', '32APSK', 'QAM'];
-        // vm.polarizations = ['Hor', 'Ver'];
-        // vm.fformats = ['DVB', 'DVB-S2'];
-        // vm.freqStatuses = ['Active', 'Inactive'];
-        // vm.channelTypes = ['Radio','TV','Data','Other'];
-        // vm.channelStatuses = ['On Air', 'Left', 'Returned', 'Resumed After a short break', 'Resumed after a long break'];
-
         // vm.countries = ['Afghanistan', 'Albania', 'Algeria', 'American_Samoa', 'Andorra', 'Angola', 'Anguilla', 'Antigua_and_Barbuda', 'Argentina', 'Armenia', 'Aruba', 'Australia', 'Austria', 'Azerbaijan', 'Bahamas', 'Bahrain', 'Bangladesh', 'Barbados', 'Belarus', 'Belgium', 'Belize', 'Benin', 'Bermuda', 'Bhutan', 'Bolivia', 'Bosnia', 'Botswana', 'Brazil', 'British_Virgin_Islands', 'Brunei', 'Bulgaria', 'Burkina_Faso', 'Burundi', 'Cambodia', 'Cameroon', 'Canada', 'Cape_Verde', 'Cayman_Islands', 'Central_African_Republic', 'Chad', 'Chile', 'China', 'Christmas_Island', 'Colombia', 'Comoros', 'Cook_Islands', 'Costa_Rica', 'Croatia', 'Cuba', 'Cyprus', 'Cyprus_Northern', 'Czech_Republic', 'Democratic_Republic_of_the_Congo', 'Denmark', 'Djibouti', 'Dominica', 'Dominican_Republic', 'Ecuador', 'Egypt', 'El_Salvador', 'Equatorial_Guinea', 'Eritrea', 'Estonia', 'Ethiopia', 'Falkland_Islands', 'Faroe_Islands', 'Fiji', 'Finland', 'France', 'French_Polynesia', 'Gabon', 'Gambia', 'Georgia', 'Germany', 'Ghana', 'Gibraltar', 'Greece', 'Greenland', 'Grenada', 'Guam', 'Guatemala', 'Guinea', 'Guinea_Bissau', 'Guyana', 'Haiti', 'Honduras', 'Hong_Kong', 'Hungary', 'Iceland', 'India', 'Indonesia', 'Iran', 'Iraq', 'Ireland', 'Israel', 'Italy', 'Jamaica', 'Japan', 'Jordan', 'Kazakhstan', 'Kenya', 'Kiribati', 'Kuwait', 'Kyrgyzstan', 'Laos', 'Latvia', 'Lebanon', 'Lesotho', 'Liberia', 'Libya', 'Liechtenstein', 'Lithuania', 'Luxembourg', 'Macao', 'Macedonia', 'Madagascar', 'Malawi', 'Malaysia', 'Maldives', 'Mali', 'Malta', 'Marshall_Islands', 'Martinique', 'Mauritania', 'Mauritius', 'Mexico', 'Micronesia', 'Moldova', 'Monaco', 'Mongolia', 'Montserrat', 'Morocco', 'Mozambique', 'Myanmar', 'Namibia', 'Nauru', 'Nepal', 'Netherlands', 'Netherlands_Antilles', 'New_Zealand', 'Nicaragua', 'Niger', 'Nigeria', 'Niue', 'Norfolk_Island', 'North_Korea', 'Norway', 'Oman', 'Pakistan', 'Palau', 'Panama', 'Papua_New_Guinea', 'Paraguay', 'Peru', 'Philippines', 'Pitcairn_Islands', 'Poland', 'Portugal', 'Puerto_Rico', 'Qatar', 'Republic_of_the_Congo', 'Romania', 'Russian_Federation', 'Rwanda', 'Saint_Kitts_and_Nevis', 'Saint_Lucia', 'Saint_Pierre', 'Saint_Vicent_and_the_Grenadines', 'Samoa', 'San_Marino', 'Sao_Tomé_and_Príncipe', 'Saudi_Arabia', 'Senegal', 'Serbia_and_Montenegro', 'Seychelles', 'Sierra_Leone', 'Singapore', 'Slovakia', 'Slovenia', 'Soloman_Islands', 'Somalia', 'South_Africa', 'South_Georgia', 'South_Korea', 'Soviet_Union', 'Spain', 'Sri_Lanka', 'Sudan', 'Suriname', 'Swaziland', 'Sweden', 'Switzerland', 'Syria', 'Taiwan', 'Tajikistan', 'Tanzania', 'Thailand', 'Tibet', 'Timor-Leste', 'Togo', 'Tonga', 'Trinidad_and_Tobago', 'Tunisia', 'Turkey', 'Turkmenistan', 'Turks_and_Caicos_Islands', 'Tuvalu', 'UAE', 'Uganda', 'Ukraine', 'United_Kingdom', 'United_States_of_America', 'Uruguay', 'US_Virgin_Islands', 'Uzbekistan', 'Vanuatu', 'Vatican_City', 'Venezuela', 'Vietnam', 'Wallis_and_Futuna', 'Yemen', 'Zambia', 'Zimbabwe'];
         vm.countries = ['Afghanistan', 'Albania', 'Algeria', 'American Samoa', 'Andorra', 'Angola', 'Anguilla', 'Antigua and Barbuda', 'Argentina', 'Armenia', 'Aruba', 'Australia', 'Austria', 'Azerbaijan', 'Bahamas', 'Bahrain', 'Bangladesh', 'Barbados', 'Belarus', 'Belgium', 'Belize', 'Benin', 'Bermuda', 'Bhutan', 'Bolivia', 'Bosnia', 'Botswana', 'Brazil', 'British Virgin Islands', 'Brunei', 'Bulgaria', 'Burkina Faso', 'Burundi', 'Cambodia', 'Cameroon', 'Canada', 'Cape Verde', 'Cayman Islands', 'Central African Republic', 'Chad', 'Chile', 'China', 'Christmas Island', 'Colombia', 'Comoros', 'Cook Islands', 'Costa Rica', 'Croatia', 'Cuba', 'Cyprus', 'Cyprus Northern', 'Czech Republic', 'Democratic Republic of the Congo', 'Denmark', 'Djibouti', 'Dominica', 'Dominican Republic', 'Ecuador', 'Egypt', 'El Salvador', 'Equatorial Guinea', 'Eritrea', 'Estonia', 'Ethiopia', 'Falkland Islands', 'Faroe Islands', 'Fiji', 'Finland', 'France', 'French Polynesia', 'Gabon', 'Gambia', 'Georgia', 'Germany', 'Ghana', 'Gibraltar', 'Greece', 'Greenland', 'Grenada', 'Guam', 'Guatemala', 'Guinea', 'Guinea Bissau', 'Guyana', 'Haiti', 'Honduras', 'Hong Kong', 'Hungary', 'Iceland', 'India', 'Indonesia', 'Iran', 'Iraq', 'Ireland', 'Israel', 'Italy', 'Jamaica', 'Japan', 'Jordan', 'Kazakhstan', 'Kenya', 'Kiribati', 'Kuwait', 'Kyrgyzstan', 'Laos', 'Latvia', 'Lebanon', 'Lesotho', 'Liberia', 'Libya', 'Liechtenstein', 'Lithuania', 'Luxembourg', 'Macao', 'Macedonia', 'Madagascar', 'Malawi', 'Malaysia', 'Maldives', 'Mali', 'Malta', 'Marshall Islands', 'Martinique', 'Mauritania', 'Mauritius', 'Mexico', 'Micronesia', 'Moldova', 'Monaco', 'Mongolia', 'Montserrat', 'Morocco', 'Mozambique', 'Myanmar', 'Namibia', 'Nauru', 'Nepal', 'Netherlands', 'Netherlands Antilles', 'New Zealand', 'Nicaragua', 'Niger', 'Nigeria', 'Niue', 'Norfolk Island', 'North Korea', 'Norway', 'Oman', 'Pakistan', 'Palau', 'Panama', 'Papua New Guinea', 'Paraguay', 'Peru', 'Philippines', 'Pitcairn Islands', 'Poland', 'Portugal', 'Puerto Rico', 'Qatar', 'Republic of the Congo', 'Romania', 'Russian Federation', 'Rwanda', 'Saint Kitts and Nevis', 'Saint Lucia', 'Saint Pierre', 'Saint Vicent and the Grenadines', 'Samoa', 'San Marino', 'Sao Tomé and Príncipe', 'Saudi Arabia', 'Senegal', 'Serbia and Montenegro', 'Seychelles', 'Sierra Leone', 'Singapore', 'Slovakia', 'Slovenia', 'Soloman Islands', 'Somalia', 'South Africa', 'South Georgia', 'South Korea', 'Soviet Union', 'Spain', 'Sri Lanka', 'Sudan', 'Suriname', 'Swaziland', 'Sweden', 'Switzerland', 'Syria', 'Taiwan', 'Tajikistan', 'Tanzania', 'Thailand', 'Tibet', 'Timor Leste', 'Togo', 'Tonga', 'Trinidad and Tobago', 'Tunisia', 'Turkey', 'Turkmenistan', 'Turks and Caicos Islands', 'Tuvalu', 'UAE', 'Uganda', 'Ukraine', 'United Kingdom', 'United States of America', 'Uruguay', 'US Virgin Islands', 'Uzbekistan', 'Vanuatu', 'Vatican City', 'Venezuela', 'Vietnam', 'Wallis and Futuna', 'Yemen', 'Zambia', 'Zimbabwe'];
-        vm.sateStatuses = ['Active', 'Inclined orbit', 'Failed', 'Not in service', 'Unknown'];
-        vm.bands = ['C-Band', 'KU-Band', 'KA-Band', 'X-Band'];
-        vm.fecs = ['1/2', '2/3', '3/4', '5/6', '7/8'];
-        vm.modulations = ['BPSK', 'QPSK', 'OQPSK', '8PSK', '16APSK', '32APSK', 'QAM'];
-        vm.polarizations = ['Hor', 'Ver'];
-        vm.fformats = ['DVB', 'DVB-S2'];
-        vm.freqStatuses = ['Active', 'Inactive'];
-        vm.channelTypes = ['Radio','TV','Data','Other'];
-        vm.channelStatuses = ['On Air', 'Left', 'Returned', 'Resumed After a short break', 'Resumed after a long break'];
+        vm.sateStatuses = [];
+        vm.bands = [];
+        vm.fecs = [];
+        vm.modulations = [];
+        vm.polarizations = [];
+        vm.fformats = [];
+        vm.freqStatuses = [];
+        vm.channelTypes = [];
+        vm.channelStatuses = [];
 
         vm.onTabSelect = function (tabId) {
             if (tabId == 'channels') {
@@ -179,6 +172,28 @@
                 }
             }
         };
+        vm.saveApidLang = function (data) {
+            var url = ServerURL + "apid-save";
+            if (vm.currApidId * 1) url += '&id=' + vm.currApidId;
+
+            data['channel_id'] = vm.currRowId;
+            $http.post(url, data, {headers: {'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'}})
+                .then(function () {
+                    vm.getData();
+                    vm.apidModal.close();
+                });
+        };
+        vm.deleteApidLang = function () {
+            if (vm.currApidId * 1) {
+                if (confirm('Are you sure want to delete this language?')) {
+                    $http.get(ServerURL + "apid-delete&id=" + vm.currApidId)
+                        .then(function () {
+                            vm.getData();
+                            vm.apidModal.close();
+                        });
+                }
+            }
+        };
         vm.openBeamModal = function (sateId, beamId) {
             vm.currRowId = sateId;
             vm.currBeamId = beamId;
@@ -202,6 +217,31 @@
                 vm.currBeamId = 0;
             }, function () {
                 vm.currBeamId = 0;
+            });
+        };
+        vm.openApidModal = function (channelId, apidId) {
+            vm.currRowId = channelId;
+            vm.currApidId = apidId;
+
+            vm.apidModal = $uibModal.open({
+                animation: true,
+                ariaLabelledBy: 'modal-title',
+                ariaDescribedBy: 'modal-body',
+                templateUrl: 'apid_form.html',
+                controller: 'ApidformController',
+                controllerAs: 'modal',
+                size: 'lg',
+                resolve: {
+                    parentScope: function () {
+                        return vm;
+                    }
+                }
+            });
+
+            vm.apidModal.result.then(function () {  // originally used selectedItem for parameter.
+                vm.currApidId = 0;
+            }, function () {
+                vm.currApidId = 0;
             });
         };
     }
@@ -256,5 +296,25 @@ function BeamformController($scope, parentScope) {
 
     $scope.close = function () {
         parentScope.beamModal.close();
+    };
+}
+
+function ApidformController($scope, parentScope) {  // for A.PID Language form.
+    $scope.data = parentScope.tableData[parentScope.currRowId]['a_pid_lang'][parentScope.currApidId];
+
+    $scope.add = function () {
+        parentScope.currApidId = 0;
+        $scope.data = {id: 0, apid_name: '', link: ''};
+    };
+
+    $scope.save = function () {
+        parentScope.saveApidLang($scope.data);
+    };
+    $scope.delete = function () {
+        parentScope.deleteApidLang();
+    };
+
+    $scope.close = function () {
+        parentScope.apidModal.close();
     };
 }
