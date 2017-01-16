@@ -24,7 +24,8 @@
                     <th>Status</th>
                     <th>Year launched</th>
                     <th>Date added</th>
-                    <th>Note</th>
+                    <th>Source</th>
+                    <th>Comments</th>
                     <th></th>
                 </tr>
                 </thead>
@@ -53,6 +54,7 @@
                     <td>{{row.status}}</td>
                     <td>{{row.year_launched}}</td>
                     <td>{{row.date_added.getDateString()}}</td>
+                    <td>{{row.source}}</td>
                     <td>{{row.note}}</td>
                     <td class="controls-td">
                         <a ng-click="vm.openModal(row.id)">Edit</a> /
@@ -72,7 +74,7 @@
     <div class="modal-body" id="modal-body-data">
         <form class="form-group">
             <div class="row">
-                <div class="col-sm-6 col-md-6">
+                <div class="col-sm-4 col-md-4">
                     <div class="form-group">
                         <label for="satellite">Satellite</label>
                         <select class="form-control" id="satellite" ng-model="data.satellite">
@@ -80,7 +82,7 @@
                         </select>
                     </div>
                 </div>
-                <div class="col-sm-6 col-md-6">
+                <div class="col-sm-4 col-md-4">
                     <div class="form-group">
                         <label for="frequency">Frequency</label>
                         <select class="form-control" id="frequency" ng-model="data.frequency">
@@ -88,19 +90,19 @@
                         </select>
                     </div>
                 </div>
-                <div class="col-sm-6 col-md-6">
+                <div class="col-sm-4 col-md-4">
                     <div class="form-group">
                         <label for="package">Package</label>
                         <input type="text" ng-model="data.package" class="form-control" id="package" placeholder="Package">
                     </div>
                 </div>
-                <div class="col-sm-6 col-md-6">
+                <div class="col-sm-4 col-md-4">
                     <div class="form-group">
                         <label for="channel_name">Name</label>
                         <input type="text" ng-model="data.channel_name" class="form-control" id="channel_name" placeholder="Name">
                     </div>
                 </div>
-                <div class="col-sm-6 col-md-6">
+                <div class="col-sm-4 col-md-4">
                     <div class="form-group">
                         <label for="channel_type">Type</label>
                         <input type="text" ng-model="data.channel_type" class="form-control" id="channel_type" list="list-channel_type">
@@ -109,55 +111,55 @@
                         </datalist>
                     </div>
                 </div>
-                <div class="col-sm-6 col-md-6">
+                <div class="col-sm-4 col-md-4">
                     <div class="form-group">
                         <label for="main_lang">Main Languages</label>
                         <input type="text" ng-model="data.main_lang" class="form-control" id="main_lang" placeholder="Main Languages">
                     </div>
                 </div>
-                <div class="col-sm-6 col-md-6">
+                <div class="col-sm-4 col-md-4">
                     <div class="form-group">
                         <label for="v_pid">V.PID</label>
                         <input type="text" ng-model="data.v_pid" class="form-control" id="v_pid" placeholder="V.PID">
                     </div>
                 </div>
-                <div class="col-sm-6 col-md-6">
+                <div class="col-sm-4 col-md-4">
                     <div class="form-group">
                         <label for="sid">SID</label>
                         <input type="text" ng-model="data.sid" class="form-control" id="sid" placeholder="SID">
                     </div>
                 </div>
-                <div class="col-sm-6 col-md-6">
+                <div class="col-sm-4 col-md-4">
                     <div class="form-group">
                         <label for="audio_codec">Audio codec</label>
                         <input type="text" ng-model="data.audio_codec" class="form-control" id="audio_codec" placeholder="Audio codec">
                     </div>
                 </div>
-                <div class="col-sm-6 col-md-6">
+                <div class="col-sm-4 col-md-4">
                     <div class="form-group">
                         <label for="video_codec">Video codec</label>
                         <input type="text" ng-model="data.video_codec" class="form-control" id="video_codec" placeholder="Video codec">
                     </div>
                 </div>
-                <div class="col-sm-6 col-md-6">
+                <div class="col-sm-4 col-md-4">
                     <div class="form-group">
                         <label for="encryption">Encryption</label>
                         <input type="text" ng-model="data.encryption" class="form-control" id="encryption" placeholder="Encryption">
                     </div>
                 </div>
-                <div class="col-sm-6 col-md-6">
+                <div class="col-sm-4 col-md-4">
                     <div class="form-group">
                         <label for="cformat">Format</label>
                         <input type="text" ng-model="data.cformat" class="form-control" id="cformat" placeholder="Format">
                     </div>
                 </div>
-                <div class="col-sm-6 col-md-6">
+                <div class="col-sm-4 col-md-4">
                     <div class="form-group">
                         <label for="resolution">Resolution</label>
                         <input type="text" ng-model="data.resolution" class="form-control" id="resolution" placeholder="Resolution">
                     </div>
                 </div>
-                <div class="col-sm-6 col-md-6">
+                <div class="col-sm-4 col-md-4">
                     <div class="form-group">
                         <label for="countries">Country</label>
                         <input type="text" ng-model="data.country" class="form-control" id="countries" list="list-countries">
@@ -166,19 +168,19 @@
                         </datalist>
                     </div>
                 </div>
-                <div class="col-sm-6 col-md-6">
+                <div class="col-sm-4 col-md-4">
                     <div class="form-group">
                         <label for="website">Website</label>
                         <input type="text" ng-model="data.website" class="form-control" id="website" placeholder="Website">
                     </div>
                 </div>
-                <div class="col-sm-6 col-md-6">
+                <div class="col-sm-4 col-md-4">
                     <div class="form-group">
                         <label for="infopage">Infopage</label>
                         <input type="text" ng-model="data.infopage" class="form-control" id="infopage" placeholder="Infopage">
                     </div>
                 </div>
-                <div class="col-sm-6 col-md-6">
+                <div class="col-sm-4 col-md-4">
                     <div class="form-group">
                         <label for="status">Status</label>
                         <input type="text" ng-model="data.status" class="form-control" id="status" list="list-status">
@@ -187,22 +189,28 @@
                         </datalist>
                     </div>
                 </div>
-                <div class="col-sm-6 col-md-6">
+                <div class="col-sm-4 col-md-4">
                     <div class="form-group">
                         <label for="year_launched">Year launched</label>
                         <input type="text" ng-model="data.year_launched" class="form-control" id="year_launched" placeholder="Year launched">
                     </div>
                 </div>
-                <div class="col-sm-6 col-md-6">
+                <div class="col-sm-4 col-md-4">
                     <div class="form-group">
                         <label for="date_added">Date added</label>
                         <input type="date" ng-model="data.date_added" class="form-control" id="date_added" placeholder="Date added">
                     </div>
                 </div>
-                <div class="col-sm-6 col-md-6">
+                <div class="col-sm-4 col-md-4">
                     <div class="form-group">
-                        <label for="note">Note</label>
-                        <input type="text" ng-model="data.note" class="form-control" id="note" placeholder="Note">
+                        <label for="source">Source</label>
+                        <input type="text" ng-model="data.source" class="form-control" id="source" placeholder="Source">
+                    </div>
+                </div>
+                <div class="col-sm-4 col-md-4">
+                    <div class="form-group">
+                        <label for="note">Comments</label>
+                        <input type="text" ng-model="data.note" class="form-control" id="note" placeholder="Comments">
                     </div>
                 </div>
             </div>

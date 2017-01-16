@@ -280,13 +280,27 @@ $table-line-color: #32a2dc;
   //position: fixed;
 }
 
-.input-container,
-.hotbird-container {
+.table-bordered > thead > tr > th {
+  border: 1px solid #0d83da;
+  border-bottom: 2px solid #0d83da;
+}
+.table-bordered > thead > tr > td, .table-bordered > tbody > tr > th, .table-bordered > tbody > tr > td, .table-bordered > tfoot > tr > th, .table-bordered > tfoot > tr > td {
+  border: 1px solid #0d83da;
+  vertical-align: middle;
+}
+
+.input-container, .singlesat-container {
   .table tbody {
     background: rgba(255, 255, 255, 0.6);
-    tr:hover {
-      background: rgba(255, 255, 255, 0.3);
+
+    .table-hover {
+      tr:hover {
+        background: rgba(255, 255, 255, 0.3);
+      }
     }
+
+
+
     .controls-td {
       a {
         color: darkred;
@@ -308,7 +322,7 @@ $table-line-color: #32a2dc;
   padding: 15px 0 0 0;
   .navigators-div {
     padding-right: 15px;
-    ul{
+    ul {
       &.pagination {
         margin: 0;
       }

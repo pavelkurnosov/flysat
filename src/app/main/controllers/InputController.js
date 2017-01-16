@@ -94,7 +94,6 @@
                 vm.channelStatuses = response.data.channels.status;
             });
         };
-
         vm.saveData = function (data) {
             var url = ServerURL + vm.currTab + "-save";
             if (vm.currRowId * 1) url += '&id=' + vm.currRowId;
@@ -150,50 +149,6 @@
                 vm.currRowId = 0;
             });
         };
-        vm.saveBeam = function (data) {
-            var url = ServerURL + "beam-save";
-            if (vm.currBeamId * 1) url += '&id=' + vm.currBeamId;
-
-            data['sate_id'] = vm.currRowId;
-            $http.post(url, data, {headers: {'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'}})
-                .then(function () {
-                    vm.getData();
-                    vm.beamModal.close();
-                });
-        };
-        vm.deleteBeam = function () {
-            if (vm.currBeamId * 1) {
-                if (confirm('Are you sure want to delete this beam?')) {
-                    $http.get(ServerURL + "beam-delete&id=" + vm.currBeamId)
-                        .then(function () {
-                            vm.getData();
-                            vm.beamModal.close();
-                        });
-                }
-            }
-        };
-        vm.saveApidLang = function (data) {
-            var url = ServerURL + "apid-save";
-            if (vm.currApidId * 1) url += '&id=' + vm.currApidId;
-
-            data['channel_id'] = vm.currRowId;
-            $http.post(url, data, {headers: {'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'}})
-                .then(function () {
-                    vm.getData();
-                    vm.apidModal.close();
-                });
-        };
-        vm.deleteApidLang = function () {
-            if (vm.currApidId * 1) {
-                if (confirm('Are you sure want to delete this language?')) {
-                    $http.get(ServerURL + "apid-delete&id=" + vm.currApidId)
-                        .then(function () {
-                            vm.getData();
-                            vm.apidModal.close();
-                        });
-                }
-            }
-        };
         vm.openBeamModal = function (sateId, beamId) {
             vm.currRowId = sateId;
             vm.currBeamId = beamId;
@@ -218,6 +173,28 @@
             }, function () {
                 vm.currBeamId = 0;
             });
+        };
+        vm.saveBeam = function (data) {
+            var url = ServerURL + "beam-save";
+            if (vm.currBeamId * 1) url += '&id=' + vm.currBeamId;
+
+            data['sate_id'] = vm.currRowId;
+            $http.post(url, data, {headers: {'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'}})
+                .then(function () {
+                    vm.getData();
+                    vm.beamModal.close();
+                });
+        };
+        vm.deleteBeam = function () {
+            if (vm.currBeamId * 1) {
+                if (confirm('Are you sure want to delete this beam?')) {
+                    $http.get(ServerURL + "beam-delete&id=" + vm.currBeamId)
+                        .then(function () {
+                            vm.getData();
+                            vm.beamModal.close();
+                        });
+                }
+            }
         };
         vm.openApidModal = function (channelId, apidId) {
             vm.currRowId = channelId;
@@ -244,6 +221,30 @@
                 vm.currApidId = 0;
             });
         };
+        vm.saveApidLang = function (data) {
+            var url = ServerURL + "apid-save";
+            if (vm.currApidId * 1) url += '&id=' + vm.currApidId;
+
+            data['channel_id'] = vm.currRowId;
+            $http.post(url, data, {headers: {'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'}})
+                .then(function () {
+                    vm.getData();
+                    vm.apidModal.close();
+                });
+        };
+        vm.deleteApidLang = function () {
+            if (vm.currApidId * 1) {
+                if (confirm('Are you sure want to delete this language?')) {
+                    $http.get(ServerURL + "apid-delete&id=" + vm.currApidId)
+                        .then(function () {
+                            vm.getData();
+                            vm.apidModal.close();
+                        });
+                }
+            }
+        };
+
+
     }
 })();
 

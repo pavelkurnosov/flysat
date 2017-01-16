@@ -14,16 +14,16 @@
                 controller: 'HomeController',
                 controllerAs: 'vm'
             })
-            .state('hotbird', {
-                url: '/hotbird',
-                templateUrl: 'app/main/views/hotbird.html',
-                controller: 'HotbirdController',
-                controllerAs: 'vm'
-            })
             .state('input', {
                 url: '/input',
                 templateUrl: 'app/main/views/input.html',
                 controller: 'InputController',
+                controllerAs: 'vm'
+            })
+            .state('singlesat', {
+                url: '/singlesat',
+                templateUrl: 'app/main/views/singlesat.html',
+                controller: 'SinglesatController',
                 controllerAs: 'vm'
             });
 
