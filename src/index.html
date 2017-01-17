@@ -42,7 +42,7 @@
         </div>
         <div class="collapse navbar-collapse" uib-collapse="isNavCollapsed">
           <ul class="nav navbar-nav navbar-right">
-            <li ng-repeat="menu in topMenuItems" ng-class="{'active' : menu.id == currMenu }" ng-click="topMenuClick(menu.id)">
+            <li ng-repeat="menu in topMenuItems" ng-class="{'active' : menu.id == currMenu }" class="{{menu.className}}" ng-click="topMenuClick(menu.id)">
               <a href="{{menu.url}}">{{menu.label}}</a>
             </li>
           </ul>

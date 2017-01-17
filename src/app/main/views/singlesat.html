@@ -1,45 +1,76 @@
-<div class="container-fluid singlesat-container">
+<div class="container singlesat-container">
     <div class="row">
         <div class="col-md-12">
-            <table class="table table-bordered table-responsive">
-                <thead>
-                <tr bgcolor="#cee7ff">
-                    <th class="text-center">TP</th>
-                    <th class="text-center">Freq & Pol</th>
-                    <th class="text-center">SR</th>
-                    <th class="text-center">FEC</th>
-                    <th class="text-center">Channel Name</th>
-                    <th class="text-center">Web</th>
-                    <th class="text-center">V.PID</th>
-                    <th class="text-center">A.PID</th>
-                    <th class="text-center">Codecs</th>
-                    <th class="text-center">SID</th>
-                    <th class="text-center">Source</th>
-                    <th class="text-center">Comments</th>
-                    <th class="text-center">Footprint</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr id="{{row.id}}" ng-repeat="row in vm.tableData">
-                    <td class="text-center" rowspan="{{vm.rowspans[row.sate_id]}}" ng-if="row.sate_id != vm.tableData[$index - 1].sate_id">
-                        <b>{{row.tp}}</b><br/>
-                        <span style="font-size: 11px;">{{row.fformat}}<br/>{{row.modulation}}</span>
-                    </td>
-                    <td class="text-center" rowspan="{{vm.rowspans[row.sate_id]}}" ng-if="row.sate_id != vm.tableData[$index - 1].sate_id">{{row.frequency}} {{(row.polarization|uppercase).substr(0,1)}}</td>
-                    <td class="text-center" rowspan="{{vm.rowspans[row.sate_id]}}" ng-if="row.sate_id != vm.tableData[$index - 1].sate_id">{{row.symbol_rate}}</td>
-                    <td class="text-center" rowspan="{{vm.rowspans[row.sate_id]}}" ng-if="row.sate_id != vm.tableData[$index - 1].sate_id">{{row.fec}}</td>
-                    <td class="text-left">{{row.channel_name}}</td>
-                    <td class="text-center"><a ng-href="http://{{row.website}}">{{row.website}}</a></td>
-                    <td class="text-center">{{row.v_pid}}</td>
-                    <td class="text-center">{{row.a_pid_lang}}</td>
-                    <td class="text-center">{{row.video_codec}} / {{row.audio_codec}}</td>
-                    <td class="text-center">{{row.sid}}</td>
-                    <td class="text-center">{{row.source}}</td>
-                    <td class="text-center">{{row.comments}}</td>
-                    <td class="text-center" rowspan="{{vm.rowspans[row.sate_id]}}" ng-if="row.sate_id != vm.tableData[$index - 1].sate_id">{{row.footprint}}</td>
-                </tr>
-                </tbody>
-            </table>
+            <div class="satellite-name text-center">
+                {{vm.satelliteName}}
+            </div>
+            <div class="sate-website-url text-center">
+                © {{vm.websiteURL}}
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="table-responsive">
+                <table class="table table-bordered">
+                    <thead>
+                    <tr bgcolor="#cee7ff">
+                        <th class="text-center">TP</th>
+                        <th class="text-center">
+                            Freq & Pol
+                            <div class="show-div-xs">
+                                <div>SR</div>
+                                <div>FEC</div>
+                            </div>
+                        </th>
+                        <th class="text-center hide-td-xs">SR</th>
+                        <th class="text-center hide-td-xs">FEC</th>
+                        <th class="text-center">Channel Name</th>
+                        <th class="text-center hidden-sm hidden-xs">Web</th>
+                        <th class="text-center hidden-sm hidden-xs">V.PID</th>
+                        <th class="text-center hidden-sm hidden-xs">A.PID</th>
+                        <th class="text-center hidden-sm hidden-xs">Codecs</th>
+                        <th class="text-center hidden-sm hidden-xs">SID</th>
+                        <th class="text-center hidden-sm hidden-xs">Source</th>
+                        <th class="text-center">Comments</th>
+                        <th class="text-center">Beams</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr id="{{row.id}}" ng-repeat="row in vm.tableData" ng-class="{'separate-tr': row.sate_id != vm.tableData[$index - 1].sate_id}">
+                        <td class="text-center" rowspan="{{vm.rowspans[row.sate_id]}}" ng-if="row.sate_id != vm.tableData[$index - 1].sate_id">
+                            <b>{{row.tp}}</b><br/>
+                            <span style="font-size: 11px;">{{row.fformat}}<br/>{{row.modulation}}</span>
+                        </td>
+                        <td class="text-center" rowspan="{{vm.rowspans[row.sate_id]}}" ng-if="row.sate_id != vm.tableData[$index - 1].sate_id">
+                            {{row.frequency}} {{(row.polarization|uppercase).substr(0,1)}}
+                            <div class="show-div-xs">
+                                <div>{{row.symbol_rate}}</div>
+                                <div>{{row.fec}}</div>
+                            </div>
+                        </td>
+                        <td class="text-center hide-td-xs" rowspan="{{vm.rowspans[row.sate_id]}}" ng-if="row.sate_id != vm.tableData[$index - 1].sate_id">{{row.symbol_rate}}</td>
+                        <td class="text-center hide-td-xs" rowspan="{{vm.rowspans[row.sate_id]}}" ng-if="row.sate_id != vm.tableData[$index - 1].sate_id">{{row.fec}}</td>
+                        <td class="text-left highlighted-td">
+                            <img class="sign-img" ng-src="./assets/img/flags/{{row.country}}.png" title="{{row.country}}" alt=" ">
+                            {{row.channel_name}}
+                        </td>
+                        <td class="text-center hidden-sm hidden-xs"><a ng-href="http://{{row.website}}">{{row.website}}</a></td>
+                        <td class="text-center hidden-sm hidden-xs">{{row.v_pid}}</td>
+                        <td class="text-center hidden-sm hidden-xs">{{row.a_pid_lang}}</td>
+                        <td class="text-center hidden-sm hidden-xs">{{row.video_codec}} / {{row.audio_codec}}</td>
+                        <td class="text-center hidden-sm hidden-xs">{{row.sid}}</td>
+                        <td class="text-center hidden-sm hidden-xs">{{row.source}}</td>
+                        <td class="text-center">{{row.comments}}</td>
+                        <td class="text-center" rowspan="{{vm.rowspans[row.sate_id]}}" ng-if="row.sate_id != vm.tableData[$index - 1].sate_id">
+                            <div ng-repeat="beam in row.beams.split('^')">
+                                <a href="http://{{beam.split('~')[1]}}">{{beam.split('~')[0]}}</a>
+                            </div>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
 

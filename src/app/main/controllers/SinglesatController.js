@@ -8,6 +8,8 @@
     /** @ngInject */
     function SinglesatController($http, ServerURL) {
         var vm = this;
+        vm.satelliteName = "Express-AM6 @ 53° East";
+        vm.websiteURL = "www.flysat.com/expressam6.php";
         vm.tableData = [];
         vm.rowspans = {};
         vm.getData = function () {
